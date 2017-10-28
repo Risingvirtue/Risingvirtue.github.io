@@ -1,0 +1,32 @@
+* {
+	font-family: "Courier";
+}
+
+#backButton {
+	color: black;
+	position: fixed;
+	top: 20px;
+	left: 10px;
+	border: none; 
+    outline: none; 
+	z-index: 100;
+	border-radius: 10 px;
+	padding: 15px;
+	background-color: #AFEEEE;
+	cursor: pointer;
+}
+
+#backButton:hover {
+	filter: opacity(50%);
+}
+
+h1{
+	text-align:center;
+}
+
+a.button:link    {
+ 
+  text-decoration:  none;
+  font-weight:      bold;
+  color:            blue;
+  } 

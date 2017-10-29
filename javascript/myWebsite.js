@@ -17,10 +17,9 @@ $(document).ready(function() {
 
 
 mapCanvas = document.getElementById("bearMaps");
-
 ctx = mapCanvas.getContext("2d");
 var mapImage = new Image();
-mapImage.src = "../img/map.png";
+mapImage.src = "./img/map.png";
 
 function resetMap() {
 	ctx.clearRect(0,0, mapCanvas.width, mapCanvas.height);
@@ -47,7 +46,7 @@ mapCanvas.addEventListener("mouseout",function() {
 seasonCanvas = document.getElementById("seasons");
 Sctx = seasonCanvas.getContext("2d");
 var seasonImage = new Image();
-seasonImage.src = "../img/leaf1.png";
+seasonImage.src = "./img/leaf1.png";
 
 function resetSeason() {
 	Sctx.clearRect(0,0, seasonCanvas.width, seasonCanvas.height);
@@ -72,7 +71,7 @@ seasonCanvas.addEventListener("mouseout",function() {
 dataCanvas = document.getElementById("DD");
 Dctx = dataCanvas.getContext("2d");
 var dataImage = new Image();
-dataImage.src = "../img/database.png";
+dataImage.src = "./img/database.png";
 
 function resetData() {
 	Dctx.clearRect(0,0, dataCanvas.width, dataCanvas.height);
@@ -97,7 +96,7 @@ dataCanvas.addEventListener("mouseout",function() {
 netCanvas = document.getElementById("net");
 Nctx = netCanvas.getContext("2d");
 var netImage = new Image();
-netImage.src = "../img/realNet1.png";
+netImage.src = "./img/realNet1.png";
 
 function resetNet() {
 	Nctx.clearRect(0,0, dataCanvas.width, dataCanvas.height);

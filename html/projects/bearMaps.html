@@ -3,24 +3,31 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Welcome To My Page</title>
-		<link rel="stylesheet" type "text/css" href="project.css">
+		<link rel="stylesheet" type "text/css" href="../../CSS/project.css">
 		</style>
 	</head>
 
 	<body>
-		<a class="button" id="backButton" href="home.html">Back</a></button>
+		<a class="button" id="backButton" href="../home.html">Back</a></button>
 		<h1 id= "name">Bear Maps</h1>
 		<div id= "summary">
 		<p>	
-			Initially, I was given all of the front end such as MapServer.class that interacted with Apache Maven. This project 
+		<h2>Introduction</h2>
+		Bear Maps is a project where we construct the backend of a google maps clone of the city of Berkeley. The final product 
+		has a zoom feature for zooming into a specific regions of the map and a routing feature for closest route between two locations
+		on the map.
+		<br>
+		<br>
+		Initially, I was given all of the front end such as MapServer.class that interacted with Apache Maven. This project 
 		was to showcase my knowledge on data structures and expertise in Java as it's the final project of the class.
-		
 		<br>
 		<br>
 		Most of my coding is done inside the target/classes/example folder. The project had three parts: 
 		rastering, routing and search.
 		<br>
 		<br>
+		
+		<h2>Rastering</h2>
 		Rastering consisted of converting information to a bit-mapped, pixel by pixel image. Given a target region on the
 		map, I needed to give the images that relayed that information for the correct zoom and correct order. My implementation
 		was a quadtree class where each node is an image that had four children (one for each quadrant with an extra level of zoom). 
@@ -34,6 +41,7 @@
 		This cut the runtime down pretty far. 
 		<br>
 		<br>
+		<h2>Routing</h2>
 		The next part required accessing data from an XML file for road names and attributes via references. Because this would be 
 		used for the final part of the code with finding optimal route, I had to create a class of nodes that stored information like
 		previous node and current distance.
@@ -44,6 +52,7 @@
 		up completely in the wrong path. It took quite a while of debugging to get A* to work.
 		<br>
 		<br>
+		<h3>Conclusion</h3>
 		Finally: the finished product could find the closest route and have a good UI for zooming in and out!
 		</p>
 		</div>

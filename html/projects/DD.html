@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Welcome To My Page</title>
+		<link rel="stylesheet" type "text/css" href="../../CSS/project.css">
+		</style>
+	</head>
+
+	<body>
+		<a class="button" id="backButton" href="../home.html">Back</a></button>
+		<h1 id= "name">Database Development</h1>
+		<div id= "summary">
+		<h2>Introduction</h2>
+			<p>In this project, I worked with a partner to implement a database management system. This includes 
+				taking in commands, parsing them, and executing them if they are valid. The system itself should be 
+				able to create tables, save/load/delete tables, print tables, and select tables. We were initially given
+				an incomplete parser for commands and an empty database class.
+			</p>
+		<h2>Parse and Functions</h2>
+			<p>I worked mostly on parse, modifying our given parser to make it more robust (being able to handle whitespaee) 
+				and connecting each distinct valid command to a function that takes in specific variables. The initial parser
+				had no sense of database keywords such as CREATE verse names of tables and actions. I created a helper parser that
+				extracted information from valid commands and funneled that into their respective functions.
+			</p>
+		<h2>Database and Tables</h2>
+			<p>The core of the project lied in the database. Every time there is a valid command, it passes its parameters
+			into a method in the table class. The table class consists of a table structure with arrays that store valid entries.
+			It also has methods to add and remove entries from a table easily. 
+			
+			Most of the methods such as create and save were pretty standard. The hardest method to implement was select. 
+			In order to implement select, an inner join helper function was needed. The inner join function compared two tables
+			and joined them into a temporary third table with similar elements based on the parameters. 
+			</p>
+			
+		<h3>Conclusion</h3>
+			<p>Finally, the end product is able to act like a database while storing and using tables.
+			</p>
+		</div>
+	</body>

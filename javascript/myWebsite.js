@@ -5,16 +5,21 @@ $(document).ready(function() {
 	resetNet();
 	$(window).scroll(function () {
     //console.log($(window).scrollTop())
-    if ($(window).scrollTop() > 100) {
+    if ($(window).scrollTop() > 10) {
       $('#navBar').addClass('navFixed');
+	   document.getElementById("topButton").style.display = "block";
     }
-    if ($(window).scrollTop() <= 100) {
+    if ($(window).scrollTop() <= 10) {
       $('#navBar').removeClass('navFixed');
-		}
-		});
+	  document.getElementById("topButton").style.display = "none";
+	}
 	});
+});
 
-
+function topFunction() {
+	document.body.screenTop = 0;
+	document.documentElement.scrollTop = 0;
+}
 
 mapCanvas = document.getElementById("bearMaps");
 ctx = mapCanvas.getContext("2d");

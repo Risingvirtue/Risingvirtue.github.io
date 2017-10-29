@@ -4,9 +4,9 @@
 
 a:link {
  
-  text-decoration:  none;
-  font-weight:      bold;
-  color:            blue;
+  text-decoration: none;
+  font-weight: bold;
+  color: blue;
   }
 
 .navFixed {
@@ -17,6 +17,26 @@ a:link {
 }
 body {
 }
+
+#topButton {
+	display:none;
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
+	z-index: 100;
+	border: none;
+	outline: none;
+	background-color:red;
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+#topButton:hover {
+	background-color:#555;
+}
+
 canvas {
 	height: 150px;
     width: 300px;

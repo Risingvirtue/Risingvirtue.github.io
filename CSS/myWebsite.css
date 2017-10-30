@@ -6,7 +6,7 @@ a:link {
  
   text-decoration: none;
   font-weight: bold;
-  color: blue;
+  color: black;
   }
 
 .navFixed {
@@ -14,6 +14,13 @@ a:link {
 	z-index: 100;
 	position: fixed;
 	width: 100%;
+}
+
+#navBar > a:hover {
+	filter:opacity(50%);
+}
+#navBar > a{
+	color: black;
 }
 body {
 }
@@ -60,7 +67,7 @@ canvas:hover {
 
 #navBar {
 	background-color:#7CB9E8;
-	padding: 5px 0 5px 0;
+	padding: 20px 0 20px 0;
 }
 a {
 	padding: 10px 20px 10px 20px;

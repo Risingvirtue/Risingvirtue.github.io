@@ -3,6 +3,7 @@ $(document).ready(function() {
 	resetSeason();
 	resetData();
 	resetNet();
+	resetShooter();
 	$(window).scroll(function () {
     //console.log($(window).scrollTop())
     if ($(window).scrollTop() > 10) {
@@ -124,6 +125,33 @@ netCanvas.onmouseover = function onMouseover(e) {
 }
 netCanvas.addEventListener("mouseout",function() {
 	resetNet();
+});
+
+
+shooterCanvas = document.getElementById("shooter");
+Shctx = shooterCanvas.getContext("2d");
+var shooterImage = new Image();
+shooterImage.src = "./img/emoji1.png";
+
+function resetShooter() {
+	Shctx.clearRect(0,0, dataCanvas.width, dataCanvas.height);
+	shooterImage.src = "./img/emoji1.png";
+	Shctx.drawImage(shooterImage, 25, 50, 50, 50);
+	Shctx.font = "25px Georgia";
+	Shctx.fillStyle = "#000000";
+	Shctx.fillText("2D Shooter", 125, 75);
+}
+
+shooterCanvas.onmouseover = function onMouseover(e) {
+	Shctx.clearRect(0,0, dataCanvas.width, dataCanvas.height);
+	shooterImage.src = "./img/emoji2.png";
+	Shctx.drawImage(shooterImage, 12.5, 37.5, 75, 75);
+	Shctx.font = "25px Georgia";
+	Shctx.fillStyle = "#F19CBB";
+	Shctx.fillText("2D Shooter", 125, 75);
+}
+shooterCanvas.addEventListener("mouseout",function() {
+	resetShooter();
 });
 
 

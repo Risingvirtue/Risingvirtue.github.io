@@ -1,6 +1,7 @@
-canvas = document.getElementById("canvas");
-ctx = canvas.getContext("2d");
-
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var menuCanvas = document.getElementById('menu');
+var menuCtx = menuCanvas.getContext("2d");
 //position = [canvas.width / 2, canvas.height / 2];
 var keys = [false, false, false, false];
 var x = 0,
@@ -18,8 +19,13 @@ var timeInterval = 300;
 var timeCounter = 0;
 let lastTime = 0;
 var ableToShoot = false;
-
+var numKilled = 0;
+var damageTaken = 0;
+var accuracy = 0;
+var bulletsShot = 0;
+var bulletsHit = 0;
 var FPS = new person(25,25,0,0,2);
+drawMenu();
 
 function update(time = 0) {
 	const deltaTime = time - lastTime;
@@ -49,6 +55,9 @@ function update(time = 0) {
 		bullets.push(temp);
 		ableToShoot = false;
 		timeCounter = 0;
+		bulletsShot += 1;
+		accuracy = Math.round(10000 * bulletsHit / bulletsShot) / 100;
+		drawMenu();
 	}
 	
 	//bullet movement
@@ -82,6 +91,10 @@ function update(time = 0) {
 			if (hit(e, b)) {
 				dead = true;
 				bullets.splice(index, 1);
+				numKilled += 1;
+				bulletsHit += 1;
+				accuracy = Math.round(10000 * bulletsHit / bulletsShot) / 100; 
+				drawMenu();
 				break;
 			}
 			index++;
@@ -173,8 +186,13 @@ function person(x, y, velX, velY, speed) {
 				break;
 			}
 			if (hit(e, this)) {
-				console.log('hit');
-				this.damage = 1500;
+				if(this.damage <= 0) {
+					this.damage = 1500;
+					damageTaken += 1;
+					drawMenu();
+				}
+				
+				
 			}
 		}
 	}
@@ -378,14 +396,39 @@ function getMousePos(canvas, evt) {
 			y:evt.clientY - rect.top};
 }
 
-/*
-menuCanvas = document.getElementById('menu');
-menuCtx = canvas.getContext("2d");
-menuMousePos = {x: 0, y:0};
-menuCtx.font = "100px Arial";
-menuCtx.fillText("Restart", 10 , 10);
-menuCtx.fillRect(0,0, menuCanvas.width, menuCanvas.height);
-
+var menuMousePos = {x: 0, y:0};
+function drawMenu() {
+	menuCtx.clearRect(0,0, menuCanvas.width, menuCanvas.height);
+	menuCtx.moveTo(menuCanvas.width / 4, 0);
+	menuCtx.lineTo(menuCanvas.width / 4, menuCanvas.height);
+	menuCtx.stroke();
+	menuCtx.moveTo(menuCanvas.width / 2, 0);
+	menuCtx.lineTo(menuCanvas.width / 2, menuCanvas.height);
+	menuCtx.stroke();
+	menuCtx.moveTo(menuCanvas.width * 3 / 4, 0);
+	menuCtx.lineTo(menuCanvas.width * 3 / 4, menuCanvas.height);
+	menuCtx.stroke();
+	menuCtx.font = "25px Arial";
+	menuCtx.fillText("Restart", 60 , menuCanvas.height / 2);
+	menuCtx.fillText("Number Killed", 20 + menuCanvas.width / 4 , menuCanvas.height / 2);
+	menuCtx.fillText('' + numKilled, 90 + menuCanvas.width / 4 , menuCanvas.height / 2 + 25);
+	menuCtx.fillText("Damage Taken", 20 + menuCanvas.width / 2 , menuCanvas.height / 2);
+	menuCtx.fillText('' + damageTaken, 90 + menuCanvas.width / 2 , menuCanvas.height / 2 + 25);
+	menuCtx.fillText("Accuracy", 50 + menuCanvas.width * 3 / 4 , menuCanvas.height / 2);
+	menuCtx.fillText('' + percent(accuracy) + '%', 60 + menuCanvas.width * 3 / 4 , menuCanvas.height / 2 + 25);
+}
+function percent(number) {
+	let temp = '' + number;
+	if (temp.includes('.')) {
+		if (temp.substring(3).length == 1) {
+			return temp + '0';
+		} else {
+			return temp;
+		}
+	} else {
+		return temp + ".00";
+	}
+}
 
 
 
@@ -393,7 +436,8 @@ menuCtx.fillRect(0,0, menuCanvas.width, menuCanvas.height);
 
 //track mouse movement from stackoverflow
 menuCanvas.addEventListener('mousedown', function(evt) {
-	mousePos = getMousePos(canvas, evt);
+	menuMousePos = getMousePos(canvas, evt);
+	console.log(mousePos);
 }, false);
 function getMousePos(canvas, evt) {
 	var rect = menuCanvas.getBoundingClientRect();
@@ -401,7 +445,7 @@ function getMousePos(canvas, evt) {
 			y:evt.clientY - rect.top};
 }
 
-*/
+
 
 
 

@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var menuCanvas = document.getElementById('menu');
 var menuCtx = menuCanvas.getContext("2d");
-=======
-canvas = document.getElementById("canvas");
-ctx = canvas.getContext("2d");
-
-var circle = new Path2D();
-
->>>>>>> parent of d39a733... damage
-//position = [canvas.width / 2, canvas.height / 2];
+position = [canvas.width / 2, canvas.height / 2];
 var keys = [false, false, false, false];
 var x = 0,
 	y = 0,
@@ -35,9 +27,6 @@ var bulletsHit = 0;
 var FPS = new person(25,25,0,0,2);
 drawMenu();
 
-enemies.push(new enemy(100, 100, 25));
-enemies.push(new enemy(300, 100, 25));
-
 function update(time = 0) {
 	const deltaTime = time - lastTime;
 	timeCounter += deltaTime;
@@ -47,32 +36,31 @@ function update(time = 0) {
 	}
 	lastTime = time;
 	requestAnimationFrame(update);
-	
-	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
+	
+	FPS.damage -= deltaTime;
+	
 	//body
 	FPS.movement();
 	FPS.draw();
-	
-	
 	//shooter
 	FPS.shooter();
 
-	
 	//angle 
 	var a = FPS.currAngle();
-	//bullets
+	//bullets create with mousedown
 	if (mouseDown && ableToShoot) {
-		let temp = new bullet(a, 50 * Math.cos(a) + FPS.x, 50 * Math.sin(a) + FPS.y);
+		let temp = new bullet(50 * Math.cos(a) + FPS.x, 50 * Math.sin(a) + FPS.y, a);
 		bullets.push(temp);
-		console.log(bullets);
 		ableToShoot = false;
 		timeCounter = 0;
 		bulletsShot += 1;
 		accuracy = Math.round(10000 * bulletsHit / bulletsShot) / 100;
 		drawMenu();
 	}
+	
+	//bullet movement
 	var newBullets = [];
 	for (b of bullets) {
 		b.move();
@@ -84,15 +72,23 @@ function update(time = 0) {
 	};
 	bullets = newBullets;
 		
-	//enemies
+	//enemies- create if less than 5
+	while (enemies.length + deadE.length < 5) {
+		//to stay within borders
+		let tempX = (canvas.width - 50) * Math.random() + 25;
+		let tempY = (canvas.height - 50) * Math.random() + 25;
+		var noCollision = checkCollision(tempX, tempY);
+		if (noCollision) {
+			enemies.push(new enemy(tempX, tempY, 25));
+		}
+	}
+	
 	var newEnemies = [];
 	for (e of enemies) {
 		let dead = false;
 		let index = 0;
 		for (b of bullets) {
-			let diffX = e.x - b.x;
-			let diffY = e.y - b.y;
-			if (Math.sqrt(diffX * diffX + diffY * diffY) < 50 + e.size) {
+			if (hit(e, b)) {
 				dead = true;
 				bullets.splice(index, 1);
 				numKilled += 1;
@@ -112,6 +108,16 @@ function update(time = 0) {
 	}
 	enemies = newEnemies;
 	
+	//damage
+	let damage = false;
+	for (e of enemies) {
+		if (hit(e, FPS)) {
+			damage = true;
+			break;
+		}
+	}
+	
+	//deadRed
 	newDead = [];
 	for (e of deadE) {
 		e.a *= 0.95;
@@ -127,14 +133,16 @@ update();
 
 
 function person(x, y, velX, velY, speed) {
-	
 	this.x = x;
 	this.y = y;
 	this.velX = velX;
 	this.velY = velY;
 	this.speed = speed;
-	
+	this.size = 25;
+	this.damage = 0;
+	this.selection = ['#000000', 'red'];
 	this.movement = function () {
+		let original = {x:this.x, y:this,y};
 		if (keys[0]) {
 			if (this.velX > -this.speed) {
 				this.velX--;
@@ -159,6 +167,8 @@ function person(x, y, velX, velY, speed) {
 		}
 		this.y += this.velY;
 		this.x += this.velX;
+		
+		//borders
 		if (this.x > (canvas.width) - 25) {
 		this.x -= this.velX;
 		} else if (this.x < 25){
@@ -169,7 +179,6 @@ function person(x, y, velX, velY, speed) {
 		} else if (this.y < 25){
 			this.y = 25;
 		}
-<<<<<<< HEAD
 		
 		//damage
 		for (e of enemies) {
@@ -186,13 +195,15 @@ function person(x, y, velX, velY, speed) {
 				
 			}
 		}
-=======
->>>>>>> parent of d39a733... damage
 	}
 
-	this.draw = function () {
+	this.draw = function() {
 		ctx.beginPath();
 		ctx.moveTo(this.x, this.y);
+		if (this.damage > 0) {
+			//console.log(Math.floor(this.damage / 500));
+			ctx.fillStyle = this.selection[Math.floor(this.damage / 200) % 2];
+		}
 		ctx.arc(this.x, this.y, 25, 0, Math.PI * 2);
 		ctx.fill();
 		ctx.closePath();
@@ -201,10 +212,15 @@ function person(x, y, velX, velY, speed) {
 	this.shooter = function () {
 		ctx.beginPath();
 		ctx.moveTo(this.x, this.y);
+		if (this.damage > 0) {
+			ctx.strokeStyle = this.selection[Math.floor(this.damage / 200) % 2];
+		}
 		let a = this.currAngle();
 		ctx.lineTo(50 * Math.cos(a) + this.x, 50 * Math.sin(a) + this.y);
 		ctx.lineWidth = 10;
 		ctx.stroke();
+		ctx.closePath();
+		ctx.strokeStyle = 'black';
 	}
 	
 	this.currAngle = function() {
@@ -218,10 +234,11 @@ function person(x, y, velX, velY, speed) {
 	}
 }
 
-function bullet(angle, x , y) {
+function bullet(x , y, angle) {
 	this.angle = angle;
 	this.x = x;
 	this.y = y;
+	this.size = 10;
 	
 	this.move = function() {
 		this.x += 10 * Math.cos(this.angle);
@@ -229,7 +246,7 @@ function bullet(angle, x , y) {
 	}
 	this.draw = function() {
 		ctx.moveTo(this.x, this.y);
-		ctx.arc(this.x, this.y, 10, 0, Math.PI * 2);
+		ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 		ctx.fill();
 	}
 }
@@ -253,8 +270,41 @@ function enemy(x, y, size) {
 	
 }
 
+function checkCollision(tempX, tempY) {
+	var noCollision = true;
+	let tempE = new enemy(tempX, tempY, 25);
+	//FPS collision
+	if (hit(FPS, tempE)) {
+		noCollision = false;
+	}
+	
+		
+	//other enemy collision
+	for (e of enemies) {
+		if (hit(e, tempE)) {
+			noCollision = false;
+		}
+	
+	}
+		
+	//other enemy collision
+	for (e of deadE) {
+		if (hit(e, tempE)) {
+			noCollision = false;
+		}
+	}
+	return noCollision;
+}
 
 
+function hit(person, enemy) {
+	let diffX = person.x - enemy.x;
+	let diffY = person.y - enemy.y;
+	if(Math.sqrt(diffX * diffX + diffY * diffY) <= person.size + enemy.size) {
+		return true;
+	}
+	return false;
+}
 /*
 function drawBody() {
 	ctx.beginPath();
@@ -304,6 +354,8 @@ document.body.addEventListener("keydown", function (e) {
 		break;
   }
 });
+
+
 document.body.addEventListener("keyup", function (e) {
     switch(e.keyCode) {
 	case 87:
@@ -323,12 +375,7 @@ document.body.addEventListener("keyup", function (e) {
 
 
 document.body.addEventListener("mousedown", function (e) {
-	mouseDown = true;
-	//console.log(mousePos);
-	//let a = currAngle();
-	//bullets.push({angle:a, x: 50 * Math.cos(a) + x, y: 50 * Math.sin(a) + y});
-	//console.log(bullets[0]);
-	
+	mouseDown = true;	
 });
 
 document.body.addEventListener("mouseup", function (e) {
@@ -349,8 +396,7 @@ function getMousePos(canvas, evt) {
 			y:evt.clientY - rect.top};
 }
 
-<<<<<<< HEAD
-var menuMousePos = {x: 0, y:0};
+//var menuMousePos = {x: 0, y:0};
 function drawMenu() {
 	menuCtx.clearRect(0,0, menuCanvas.width, menuCanvas.height);
 	menuCtx.moveTo(menuCanvas.width / 4, 0);
@@ -387,10 +433,11 @@ function percent(number) {
 
 
 
-
+/*
 //track mouse movement from stackoverflow
 menuCanvas.addEventListener('mousedown', function(evt) {
 	menuMousePos = getMousePos(canvas, evt);
+	console.log(menuMousePos);
 	console.log(mousePos);
 }, false);
 function getMousePos(canvas, evt) {
@@ -400,12 +447,10 @@ function getMousePos(canvas, evt) {
 }
 
 
+*/
 
 
 
 
 
 
-
-=======
->>>>>>> parent of d39a733... damage

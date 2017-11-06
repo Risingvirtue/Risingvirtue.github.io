@@ -4,6 +4,7 @@ $(document).ready(function() {
 	resetData();
 	resetNet();
 	resetShooter();
+	resetDodge();
 	$(window).scroll(function () {
     //console.log($(window).scrollTop())
     if ($(window).scrollTop() > 10) {
@@ -153,6 +154,38 @@ shooterCanvas.onmouseover = function onMouseover(e) {
 shooterCanvas.addEventListener("mouseout",function() {
 	resetShooter();
 });
+
+
+
+dodgeCanvas = document.getElementById("dodge");
+dodgeCtx = dodgeCanvas.getContext("2d");
+var dodgeImage = new Image();
+dodgeImage.src = "./img/emoji1.png";
+
+function resetDodge() {
+	dodgeCtx.clearRect(0,0, dataCanvas.width, dataCanvas.height);
+	dodgeImage.src = "./img/emoji1.png";
+	dodgeCtx.drawImage(shooterImage, 25, 50, 50, 50);
+	dodgeCtx.font = "25px Georgia";
+	dodgeCtx.fillStyle = "#000000";
+	dodgeCtx.fillText("Dodge This!", 125, 75);
+}
+
+dodgeCanvas.onmouseover = function onMouseover(e) {
+	dodgeCtx.clearRect(0,0, dataCanvas.width, dataCanvas.height);
+	dodgeImage.src = "./img/emoji2.png";
+	dodgeCtx.drawImage(dodgeImage, 12.5, 37.5, 75, 75);
+	dodgeCtx.font = "25px Georgia";
+	dodgeCtx.fillStyle = "#F19CBB";
+	dodgeCtx.fillText("Dodge This!", 125, 75);
+}
+
+dodgeCanvas.addEventListener("mouseout",function() {
+	resetDodge();
+});
+
+
+
 
 
 

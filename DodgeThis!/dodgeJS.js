@@ -248,7 +248,7 @@ function update(time = 0) {
         p.y = 50;
         Mctx.clearRect(0,0, menu.width, menu.height);
         alert("Game Over! Your score was: " + (currTime / 1000).toFixed(2) + " seconds. Wao!");
-        bestTime = (currTime / 1000).toFixed(2);
+        bestTime = Math.max(((currTime / 1000).toFixed(2)), bestTime);
         restart = true;
         boardState = true;
     }

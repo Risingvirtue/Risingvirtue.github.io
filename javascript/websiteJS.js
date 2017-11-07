@@ -120,6 +120,11 @@ function update(time = 0) {
 	
 	if (timeClicked < 0) {
 		window.location.href = nextLink;
+		timeClicked = 2000;
+		linkClicked = false;
+		cancelAnimationFrame(update);
+		newPageBubbles = [];
+		generateBubbles();
 	}
 }
 //update();
@@ -137,11 +142,6 @@ function generateBubbles() {
 	}
 }
 generateBubbles();
-
-
-
-
-
 
 function over(mouse, bubble) {
 	let diffX = mouse.x - bubble.x;
@@ -185,9 +185,9 @@ canvas.addEventListener('click', function(e) {
 	for (b of bubbles) {
 		if (over(mousePos, b) || over(mousePos, b.s) && !linkClicked) {
 			linkClicked = true;
-			console.log(nextLink);
+			//console.log(nextLink);
 			nextLink = b.l;
-			console.log(nextLink);
+			//console.log(nextLink);
 		}
 	}
 	

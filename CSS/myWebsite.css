@@ -1,13 +1,18 @@
 * {
 	font-family: "Georgia";
+	text-align: center;
 }
 
 a:link {
- 
   text-decoration: none;
   font-weight: bold;
+  font-size: 40px;
   color: black;
   }
+ a:visited {color:#000;}  /* visited link    */
+a:hover   {filter:opacity(50%);
+			transition: filter .25s;}  /* mouse over link */
+a:active  {color:#000;}  /* selected link   */ 
 
 .navFixed {
 	top: 0;

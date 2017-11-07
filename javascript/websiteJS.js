@@ -55,10 +55,14 @@ function bubble(x, y, mulX, mulY, size, speed) {
 	
 	this.type = function () {
 		ctx.font = "40px Georgia";
-		ctx.fillStyle = "#000000";
+		ctx.fillStyle = "#8b8682";
 		//console.log(this.t);
 		console.log(this.t.length / 2.0);
-		ctx.fillText(this.t, this.x - (this.t.length / 2.0) * 20, this.y + 10);	
+		let xOffset = (this.t.length / 2) * 20;
+		if (this.t.length % 2 == 0) {
+			xOffset -= 10;
+		}
+		ctx.fillText(this.t, this.x - xOffset, this.y + 10);	
 	}
 }
 

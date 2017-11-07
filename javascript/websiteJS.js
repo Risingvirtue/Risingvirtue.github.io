@@ -136,12 +136,10 @@ function generateBubbles() {
 		let tempSpeed = Math.random() * 5 + 2; 
 		let tempColor = Math.floor(Math.random() * 5);
 		let tempColor2 = Math.floor(Math.random() * 5);
-
 		//console.log(new bubble(tempX * canvas.width, tempY, tempX, 1.1, 15, tempSpeed));
 		newPageBubbles.push(new bubble(tempX * canvas.width, tempY, tempX, 1.1, 15, tempSpeed, tempColor, tempColor2));
 	}
 }
-generateBubbles();
 
 function over(mouse, bubble) {
 	let diffX = mouse.x - bubble.x;
@@ -164,6 +162,8 @@ function resizeCanvas(){
 		b.y = b.mulY * canvas.height;
 		
 	}
+	newPageBubbles = [];
+	generateBubbles();
 	update();
 }
 window.addEventListener("resize", resizeCanvas);
@@ -187,6 +187,7 @@ canvas.addEventListener('click', function(e) {
 			linkClicked = true;
 			//console.log(nextLink);
 			nextLink = b.l;
+			generateBubbles();
 			//console.log(nextLink);
 		}
 	}

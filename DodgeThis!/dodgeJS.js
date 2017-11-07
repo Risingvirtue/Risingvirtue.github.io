@@ -31,7 +31,7 @@ function person(x, y, velX, velY, speed) {
 	this.speed = speed;
 	this.size = 25;
 	this.damage = 0;
-	this.selection = ['#0000FF', 'red'];
+	this.selection = ['red', '#0000FF'];
     this.color = 0;
 	this.move = function () {
 		let original = {x:this.x, y:this,y};
@@ -222,11 +222,10 @@ function update(time = 0) {
             b.move();
             b.draw();
             if (collision(b, p)) {
-                console.log('stop');
+                //console.log('stop');
                 boardState = false;
             }
         }
-        
         for (var i = 0; i < balls.length; i++) {
             for (var j = i + 1; j < balls.length; j++) {
                 if (collision (balls[i], balls[j]) && !falseBalls[i] && !falseBalls[j]) {
@@ -239,9 +238,7 @@ function update(time = 0) {
                 }
             }
         }
-        
-        
-       
+
     } else if (!boardState && !begin) {
         balls = [];
         p.x = 50;

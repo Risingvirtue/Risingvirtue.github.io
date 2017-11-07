@@ -20,7 +20,6 @@ bubbles[2].l = "./html/contact.html";
 ctx.fillStyle = "#00BFFF";
 ctx.fillRect(0,0, canvas.width, canvas.height);
 //bubbles[0].draw();
-
 ctx.fillStyle = "black";
 
 ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2);
@@ -39,8 +38,8 @@ function bubble(x, y, mulX, mulY, size, speed) {
 		ctx.beginPath();
 		let gradient = ctx.createLinearGradient(this.x - this.size * Math.sin(Math.PI / 4), this.y + this.size * Math.sin(Math.PI / 4),
 												this.x + this.size * Math.sin(Math.PI / 4), this.y - this.size * Math.sin(Math.PI / 4));
-		gradient.addColorStop(0,"#4169E1");
-		gradient.addColorStop(1, "#87CEEB");
+		gradient.addColorStop(0,"#ffffba");
+		gradient.addColorStop(1, "#baffc9");
 		ctx.fillStyle = gradient;
 		ctx.arc(this.x,this.y,this.size, 0, Math.PI *2);
 		ctx.fill();
@@ -73,7 +72,7 @@ function shadow(x, y, mulX, mulY, size) {
 	this.draw = function() {
 		//console.log('yes');
 		ctx.beginPath();
-		ctx.fillStyle = "#4682B4";
+		ctx.fillStyle = "#ffdfba";
 		ctx.arc(this.x,this.y,this.size, 0, Math.PI *2);
 		ctx.fill();
 		ctx.closePath();
@@ -88,7 +87,7 @@ function update(time = 0) {
 	lastTime = time;
 	requestAnimationFrame(update);
 	ctx.clearRect(0,0, canvas.width, canvas.height);
-	ctx.fillStyle = "#00BFFF";
+	ctx.fillStyle = "#bae1ff";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
 	for (b of bubbles) {
 		b.s.draw();

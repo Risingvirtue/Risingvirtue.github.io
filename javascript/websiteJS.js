@@ -4,15 +4,16 @@ var mousePos = {};
 var bubbles = [];
 var newPageBubbles = [];
 var linkClicked = false;
-var timeClicked = 3000;
+var timeClicked = 2000;
 var nextLink = "./index.html";
+var pastel = ["#ffb3ba","#ffdfba","#ffffba","#baffc9","#bae1ff"];
 resizeCanvas();
-bubbles.push(new bubble(canvas.width / 4 - 50, canvas.height / 2 - 50, 0.25, 0.5, 100, 1));
-bubbles.push(new bubble(canvas.width / 2 - 50, canvas.height / 2 - 100, 0.5, 0.4, 100, 1));
-bubbles.push(new bubble(canvas.width * 3 / 4 - 50, canvas.height / 2 - 50, 0.75, 0.5, 100, 1));
+bubbles.push(new bubble(canvas.width / 4 - 50, canvas.height / 2 - 50, 0.25, 0.5, 100, 1, 2, 1));
+bubbles.push(new bubble(canvas.width / 2 - 50, canvas.height / 2 - 100, 0.5, 0.4, 100, 1, 2, 1));
+bubbles.push(new bubble(canvas.width * 3 / 4 - 50, canvas.height / 2 - 50, 0.75, 0.5, 100, 1, 2, 1));
 bubbles[0].t = "Bio";
 bubbles[1].t = "Projects";
-bubbles[2]. t = "Contact";
+bubbles[2]. t = "Contacts";
 bubbles[0].l = "./html/bio.html";
 bubbles[1].l = "./html/project.html";
 bubbles[2].l = "./html/contact.html";
@@ -20,11 +21,8 @@ bubbles[2].l = "./html/contact.html";
 ctx.fillStyle = "#00BFFF";
 ctx.fillRect(0,0, canvas.width, canvas.height);
 //bubbles[0].draw();
-ctx.fillStyle = "black";
 
-ctx.arc(canvas.width / 2, canvas.height / 2, 50, 0, Math.PI * 2);
-ctx.fill();
-function bubble(x, y, mulX, mulY, size, speed) {
+function bubble(x, y, mulX, mulY, size, speed, color, up) {
 	this.x = x;
 	this.y = y;
 	this.mulX = mulX;
@@ -33,13 +31,15 @@ function bubble(x, y, mulX, mulY, size, speed) {
 	this.numUp = 0;
 	this.size = size;
 	this.speed = speed;
+	this.color = color;
+	this.up = up;
 	this.s = new shadow(this.x, this.y, this.mulX, this.mulY, this.size);
 	this.draw = function() {
 		ctx.beginPath();
 		let gradient = ctx.createLinearGradient(this.x - this.size * Math.sin(Math.PI / 4), this.y + this.size * Math.sin(Math.PI / 4),
 												this.x + this.size * Math.sin(Math.PI / 4), this.y - this.size * Math.sin(Math.PI / 4));
-		gradient.addColorStop(0,"#ffffba");
-		gradient.addColorStop(1, "#baffc9");
+		gradient.addColorStop(0,pastel[color]);
+		gradient.addColorStop(1, pastel[up]);
 		ctx.fillStyle = gradient;
 		ctx.arc(this.x,this.y,this.size, 0, Math.PI *2);
 		ctx.fill();
@@ -57,7 +57,7 @@ function bubble(x, y, mulX, mulY, size, speed) {
 		ctx.font = "40px Georgia";
 		ctx.fillStyle = "#8b8682";
 		//console.log(this.t);
-		console.log(this.t.length / 2.0);
+		//console.log(this.t.length / 2.0);
 		let xOffset = (this.t.length / 2) * 20;
 		if (this.t.length % 2 == 0) {
 			xOffset -= 10;
@@ -76,7 +76,7 @@ function shadow(x, y, mulX, mulY, size) {
 	this.draw = function() {
 		//console.log('yes');
 		ctx.beginPath();
-		ctx.fillStyle = "#ffdfba";
+		ctx.fillStyle = "#baffc9";
 		ctx.arc(this.x,this.y,this.size, 0, Math.PI *2);
 		ctx.fill();
 		ctx.closePath();
@@ -128,12 +128,16 @@ function generateBubbles() {
 	while (newPageBubbles.length < 100) {
 		let tempX = Math.random();
 		let tempY = canvas.height * 1.1;
-		let tempSpeed = Math.random() * 3 + 1; 
+		let tempSpeed = Math.random() * 5 + 2; 
+		let tempColor = Math.floor(Math.random() * 5);
+		let tempColor2 = Math.floor(Math.random() * 5);
+
 		//console.log(new bubble(tempX * canvas.width, tempY, tempX, 1.1, 15, tempSpeed));
-		newPageBubbles.push(new bubble(tempX * canvas.width, tempY, tempX, 1.1, 15, tempSpeed));
+		newPageBubbles.push(new bubble(tempX * canvas.width, tempY, tempX, 1.1, 15, tempSpeed, tempColor, tempColor2));
 	}
 }
 generateBubbles();
+
 
 
 

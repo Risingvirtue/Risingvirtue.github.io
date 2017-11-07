@@ -5,8 +5,10 @@ $(document).ready(function() {
 	resetNet();
 	resetShooter();
 	resetDodge();
+	/*
 	$(window).scroll(function () {
     //console.log($(window).scrollTop())
+	
     if ($(window).scrollTop() > 10) {
       $('#navBar').addClass('navFixed');
 	   document.getElementById("topButton").style.display = "block";
@@ -16,6 +18,7 @@ $(document).ready(function() {
 	  document.getElementById("topButton").style.display = "none";
 	}
 	});
+	*/
 });
 
 function topFunction() {

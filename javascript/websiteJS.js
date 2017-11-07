@@ -55,6 +55,7 @@ function bubble(x, y, mulX, mulY, size, speed) {
 	}
 	
 	this.type = function () {
+
 		ctx.font = "40px Georgia";
 		ctx.fillStyle = "#000000";
 		//console.log(this.t);
@@ -116,7 +117,11 @@ function update(time = 0) {
 	}
 	
 	if (timeClicked < 0) {
+<<<<<<< HEAD
 		window.location.href = nextLink;
+=======
+		window.location = nextLink;
+>>>>>>> e68e66d4b82bd5bcd273107e67012d0e93b9e752
 	}
 }
 //update();

@@ -1,5 +1,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+canvas.width = 800;
+canvas.height = 600;
 var mousePos = {};
 var bubbles = [];
 var newPageBubbles = [];
@@ -7,6 +9,8 @@ var linkClicked = false;
 var timeClicked = 2000;
 var nextLink = "./index.html";
 var pastel = ["#ffb3ba","#ffdfba","#ffffba","#baffc9","#bae1ff"];
+var iT = new initialText(canvas.width / 2, canvas.height / 8);
+var eT = new endText(canvas.width / 2, canvas.height / 8);
 resizeCanvas();
 bubbles.push(new bubble(canvas.width / 4 - 50, canvas.height / 2 - 50, 0.25, 0.5, 100, 1, 2, 3));
 bubbles.push(new bubble(canvas.width / 2 - 50, canvas.height / 2 - 100, 0.5, 0.4, 100, 1, 2, 3));
@@ -18,9 +22,6 @@ bubbles[0].l = "./html/bio.html";
 bubbles[1].l = "./html/project.html";
 bubbles[2].l = "./html/contact.html";
 
-ctx.fillStyle = "#00BFFF";
-ctx.fillRect(0,0, canvas.width, canvas.height);
-//bubbles[0].draw();
 
 function bubble(x, y, mulX, mulY, size, speed, color, up) {
 	this.x = x;
@@ -56,13 +57,11 @@ function bubble(x, y, mulX, mulY, size, speed, color, up) {
 	this.type = function () {
 		ctx.font = "40px Georgia";
 		ctx.fillStyle = "#8b8682";
-		//console.log(this.t);
-		//console.log(this.t.length / 2.0);
 		let xOffset = (this.t.length / 2) * 20;
 		if (this.t.length % 2 == 0) {
 			xOffset -= 10;
 		}
-		ctx.fillText(this.t, this.x - xOffset, this.y + 10);	
+		ctx.fillText(this.t, this.x - xOffset, this.y + 10);
 	}
 }
 
@@ -74,7 +73,6 @@ function shadow(x, y, mulX, mulY, size) {
 	this.size= size;
 	
 	this.draw = function() {
-		//console.log('yes');
 		ctx.beginPath();
 		ctx.fillStyle = "#baffc9";
 		ctx.arc(this.x,this.y,this.size, 0, Math.PI *2);
@@ -83,33 +81,89 @@ function shadow(x, y, mulX, mulY, size) {
 	}
 }
 
+function initialText(x, y) {
+	this.x = x;
+	this.y = y;
+	this.a = 1;
+	this.draw = function() {
+		ctx.globalAlpha = this.a;
+		ctx.font = "60px Georgia";
+		let gradient = ctx.createLinearGradient(this.x - 250, this.y, this.x + 25 * 40 - 250, this.y);
+		gradient.addColorStop(0,'#f08080');
+		gradient.addColorStop(1, "#000000");
+		ctx.fillStyle = gradient;
+		ctx.fillText("hello", this.x - 250, this.y);
+		ctx.font = "40px Georgia";
+		ctx.fillText(" I'm Johnny On.", this.x - 250, this.y + 40);
+		ctx.fillText("  an aspiring programmer.", this.x - 250, this.y + 80);
+		ctx.globalAlpha = 1;
+	}
+}
+
+function endText(x,y) {
+	this.x = x;
+	this.y = y;
+	this.pUp = 0;
+	this.draw = function() {
+		if (this.pUp > 40) {
+			this.pUp = 40;
+		}
+		let gradient = ctx.createLinearGradient(this.x - 250, this.y, this.x + 25 * 40 - 250, this.y);
+		gradient.addColorStop(0,'#f08080');
+		gradient.addColorStop(1, "#000000");
+		ctx.fillStyle = gradient;
+		ctx.font = "40px Georgia";
+		ctx.fillText("Johnny,", this.x + 20 * 4 - 250, this.y + 40);
+		ctx.fillText(" programmer", this.x + 11 * 20 - 2 - 250, this.y + 80 - this.pUp);
+	}
+}
+
 var lastTime = 0;
+var timer = 0;
+var nextTimer = 0;
 function update(time = 0) {
 	const deltaTime = time - lastTime;
-	//console.log(deltaTime);
-	//console.log(linkClicked);
+	timer += deltaTime;
 	lastTime = time;
 	requestAnimationFrame(update);
 	ctx.clearRect(0,0, canvas.width, canvas.height);
 	ctx.fillStyle = "#bae1ff";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
-	for (b of bubbles) {
-		b.s.draw();
-		if (over(mousePos, b) || over(mousePos, b.s)) {
-			if (b.numUp < 25) {
-				b.y -= b.speed;
-				b.numUp += 1;
+	
+	if (timer > 5000 && nextTimer > 1000) {
+		eT.draw();
+		for (b of bubbles) {
+			b.s.draw();
+			if (over(mousePos, b) || over(mousePos, b.s)) {
+				if (b.numUp < 25) {
+					b.y -= b.speed;
+					b.numUp += 1;
+				}
+			} else {
+				if (b.numUp > 1) {
+					b.y += b.speed;
+					b.numUp -= 1;
+				}
 			}
-		} else {
-			if (b.numUp > 1) {
-				b.y += b.speed;
-				b.numUp -= 1;
-			}
+			b.draw();
+			b.type();
 		}
-		b.draw();
-		b.type();
+	} else {
+		if (iT.a != 0) {
+			iT.a *= .99;
+			if (iT.a < .1) {
+				iT.a = 0;
+			}
+			iT.draw();
+			eT.draw();
+		} else {
+			nextTimer += deltaTime;
+			eT.pUp += 1;
+			eT.draw();
+			
+		}
+		
 	}
-	//console.log(linkClicked);
 	if (linkClicked && timeClicked > 0) {
 		timeClicked -= deltaTime;
 		for (b of newPageBubbles) {
@@ -126,8 +180,8 @@ function update(time = 0) {
 		newPageBubbles = [];
 		generateBubbles();
 	}
+	
 }
-//update();
 
 function generateBubbles() {
 	while (newPageBubbles.length < 100) {
@@ -160,6 +214,10 @@ function resizeCanvas(){
 		b.s.y = b.s.mulY * canvas.height;
 		b.x = b.mulX * canvas.width;
 		b.y = b.mulY * canvas.height;
+		iT.x = canvas.width / 2;
+		iT.y = canvas.height / 8;
+		eT.x = canvas.width / 2;
+		eT.y = canvas.height / 8;
 		
 	}
 	newPageBubbles = [];
@@ -171,7 +229,6 @@ window.addEventListener("resize", resizeCanvas);
 //from stackoverflow
 canvas.addEventListener('mousemove', function(evt) {
 	mousePos = getMousePos(canvas, evt);
-	//console.log(mousePos);
 }, false);
 
 function getMousePos(canvas, evt) {
@@ -185,10 +242,8 @@ canvas.addEventListener('click', function(e) {
 	for (b of bubbles) {
 		if (over(mousePos, b) || over(mousePos, b.s) && !linkClicked) {
 			linkClicked = true;
-			//console.log(nextLink);
 			nextLink = b.l;
 			generateBubbles();
-			//console.log(nextLink);
 		}
 	}
 	

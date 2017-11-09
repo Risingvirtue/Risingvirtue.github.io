@@ -14,17 +14,14 @@ var eT = new endText(canvas.width / 2, canvas.height / 8);
 bubbles.push(new bubble(canvas.width / 4 - 50, canvas.height / 2 - 50, 0.25, 0.5, 100, 1, 2, 3));
 bubbles.push(new bubble(canvas.width / 2 - 50, canvas.height / 2 - 100, 0.5, 0.4, 100, 1, 2, 3));
 bubbles.push(new bubble(canvas.width * 3 / 4 - 50, canvas.height / 2 - 50, 0.75, 0.5, 100, 1, 2, 3));
-
-//create links and text
 bubbles[0].t = "Bio";
 bubbles[1].t = "Projects";
 bubbles[2]. t = "Contacts";
-bubbles[0].l = "./html/bio.html";
-bubbles[1].l = "./html/project.html";
-bubbles[2].l = "./html/contact.html";
-resizeCanvas();
+bubbles[0].l = "../html/bio.html";
+bubbles[1].l = "../html/project.html";
+bubbles[2].l = "../html/contact.html";
 
-//bubble class
+resizeCanvas();
 function bubble(x, y, mulX, mulY, size, speed, color, up) {
 	this.x = x;
 	this.y = y;
@@ -67,13 +64,12 @@ function bubble(x, y, mulX, mulY, size, speed, color, up) {
 	}
 }
 
-//green shadow
 function shadow(x, y, mulX, mulY, size) {
 	this.x = x;
 	this.y = y;
 	this.mulX = mulX;
 	this.mulY = mulY;
-	this.size = size;
+	this.size= size;
 	
 	this.draw = function() {
 		ctx.beginPath();
@@ -83,7 +79,6 @@ function shadow(x, y, mulX, mulY, size) {
 		ctx.closePath();
 	}
 }
-
 
 function initialText(x, y) {
 	this.x = x;
@@ -109,7 +104,6 @@ function endText(x,y) {
 	this.y = y;
 	this.pUp = 0;
 	this.gone = false;
-	this.inLine = false;
 	this.draw = function() {
 		if (this.pUp > 40) {
 			this.pUp = 40;
@@ -130,8 +124,8 @@ function endText(x,y) {
 
 var lastTime = 0;
 var timer = 0;
+var nextTimer = 0;
 var clickable = false;
-//updates animation frame
 function update(time = 0) {
 	const deltaTime = time - lastTime;
 	timer += deltaTime;
@@ -141,7 +135,7 @@ function update(time = 0) {
 	ctx.fillStyle = "#bae1ff";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
 	
-	if (timer > 3000 && eT.inLine) {
+	if (timer > 3000 && nextTimer > 1000) {
 		eT.draw();
 		for (b of bubbles) {
 			b.s.draw();
@@ -159,22 +153,6 @@ function update(time = 0) {
 			b.draw();
 			b.type();
 		}
-		if (linkClicked && timeClicked > 0) {
-			timeClicked -= deltaTime;
-			for (b of newPageBubbles) {
-				b.y -= b.speed;
-				b.draw();
-			}
-		}
-	
-		if (timeClicked < 0) {
-			window.location.href = nextLink;
-			timeClicked = 2000;
-			linkClicked = false;
-			cancelAnimationFrame(update);
-			newPageBubbles = [];
-			generateBubbles();
-		}
 	} else {
 		if (iT.a != 0) {
 			if (timer > 2000) {
@@ -187,18 +165,32 @@ function update(time = 0) {
 			eT.draw();
 		} else {
 			eT.gone = true;
+			nextTimer += deltaTime;
 			eT.pUp += 1;
-			if (eT.pUp == 40) {
-				eT.inLine = true;
-			}
 			eT.draw();
 			
 		}
 		
 	}
+	if (linkClicked && timeClicked > 0) {
+		timeClicked -= deltaTime;
+		for (b of newPageBubbles) {
+			b.y -= b.speed;
+			b.draw();
+		}
+	}
+	
+	if (timeClicked < 0) {
+		window.location.href = nextLink;
+		timeClicked = 2000;
+		linkClicked = false;
+		cancelAnimationFrame(update);
+		newPageBubbles = [];
+		generateBubbles();
+	}
+	
 }
 
-//creates floating up bubbles dynamically
 function generateBubbles() {
 	while (newPageBubbles.length < 100) {
 		let tempX = Math.random();
@@ -206,11 +198,11 @@ function generateBubbles() {
 		let tempSpeed = Math.random() * 5 + 2; 
 		let tempColor = Math.floor(Math.random() * 5);
 		let tempColor2 = Math.floor(Math.random() * 5);
+		//console.log(new bubble(tempX * canvas.width, tempY, tempX, 1.1, 15, tempSpeed));
 		newPageBubbles.push(new bubble(tempX * canvas.width, tempY, tempX, 1.1, 15, tempSpeed, tempColor, tempColor2));
 	}
 }
 
-//detects if on top of bubble
 function over(mouse, bubble) {
 	let diffX = mouse.x - bubble.x;
 	let diffY = mouse.y - bubble.y;
@@ -257,7 +249,6 @@ canvas.addEventListener('click', function(e) {
 	mousePos = getMousePos(canvas, e);
 	for (b of bubbles) {
 		if (over(mousePos, b) || over(mousePos, b.s) && !linkClicked) {
-			console.log(eT.inLine);
 			linkClicked = true;
 			nextLink = b.l;
 			generateBubbles();

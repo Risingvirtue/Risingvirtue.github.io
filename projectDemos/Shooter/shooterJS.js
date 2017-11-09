@@ -21,7 +21,7 @@ let lastTime = 0;
 var ableToShoot = false;
 var numKilled = 0;
 var damageTaken = 0;
-var accuracy = 0;
+var accuracy = 100;
 var bulletsShot = 0;
 var bulletsHit = 0;
 var FPS = new person(25,25,0,0,2);
@@ -55,8 +55,12 @@ function update(time = 0) {
 		bullets.push(temp);
 		ableToShoot = false;
 		timeCounter = 0;
-		bulletsShot += 1;
+		//bulletsShot += 1;
+		if (bulletsShot != 0) {
 		accuracy = Math.round(10000 * bulletsHit / bulletsShot) / 100;
+		} else {
+			accuracy = 100;
+		}
 		drawMenu();
 	}
 	
@@ -65,6 +69,9 @@ function update(time = 0) {
 	for (b of bullets) {
 		b.move();
 		if (b.x > canvas.width || b.x < 0 || b.y > canvas.height || b.y < 0){
+			bulletsShot += 1;
+			accuracy = Math.round(10000 * bulletsHit / bulletsShot) / 100;
+			drawMenu();
 			continue;
 		} 
 		b.draw();
@@ -93,6 +100,7 @@ function update(time = 0) {
 				bullets.splice(index, 1);
 				numKilled += 1;
 				bulletsHit += 1;
+				bulletsShot += 1;
 				accuracy = Math.round(10000 * bulletsHit / bulletsShot) / 100; 
 				drawMenu();
 				break;

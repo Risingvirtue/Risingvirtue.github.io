@@ -1,18 +1,18 @@
 * {
-	font-family: "Courier";
+	font-family: "Georgia";
 }
 
 #backButton {
 	color: black;
 	position: fixed;
 	top: 20px;
-	left: 10px;
+	left: 20px;
 	border: none; 
     outline: none; 
 	z-index: 100;
 	border-radius: 10 px;
 	padding: 15px;
-	background-color: #AFEEEE;
+	background-color: #ffdfba;
 	cursor: pointer;
 }
 

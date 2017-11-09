@@ -44,7 +44,7 @@ class leafImage {
 var leafStack = [];
 
 function generateTo100(leafStack) {
-  while (leafStack.length != 100) {
+  while (leafStack.length != 50) {
     leafStack.push(generateLeaves());
   }
 }
@@ -60,11 +60,16 @@ function generateLeaves() {
   return tempLeaf;
 }
 //create 100 leaves
-generateTo100(leafStack);
+$( document ).ready(function() {
+    generateTo100(leafStack);
+	timeStep();
+});
 
-setInterval(timeStep, 100);
+
+
 //creates the next movement
 function timeStep() {
+	requestAnimationFrame(timeStep);
   ctx.clearRect(0,0, canvas.width, canvas.height);
   ctx.drawImage(background, 0 , 0 , canvas.width, canvas.height);
   var newLeafStack = [];

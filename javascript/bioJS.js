@@ -22,7 +22,7 @@ function bio(x, y) {
 		ctx.font = "20px Georgia";
 		ctx.fillStyle = "black";
 		let a = "Johnny On is a recent graduate from UC Berkeley";
-		let b = " with degrees in both Applied Mathematics and Microbiology.";
+		let b = " with degrees in both Applied Mathematics and";
 		let c = "He is currently looking for an internship in the field of computer science.";
 		let d = "He has most recently been creating personal projects while expanding his knowledge";
 		let e = " in languages, frameworks, and APIs.";
@@ -32,6 +32,7 @@ function bio(x, y) {
 		let i = "You can contact him here!";
 		
 		ctx.fillText(a + b, this.x, this.y);
+		ctx.fillText("Microbiology", this.x, this,y + 20);
 		//ctx.fillText(b, this.x, this.y + 20);
 		ctx.fillText(c, this.x, this.y + 40);
 		ctx.fillText(d + e, this.x, this.y + 80);

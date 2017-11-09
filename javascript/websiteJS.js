@@ -96,10 +96,10 @@ function initialText(x, y) {
 		gradient.addColorStop(0,'#f08080');
 		gradient.addColorStop(1, "#000000");
 		ctx.fillStyle = gradient;
-		ctx.fillText("hello", this.x - 250, this.y);
+		ctx.fillText("Hello!", this.x - 250, this.y);
 		ctx.font = "40px Georgia";
-		ctx.fillText("  I'm Johnny On.", this.x - 250, this.y + 40);
-		ctx.fillText("    an aspiring programmer.", this.x - 250, this.y + 80);
+		ctx.fillText("        I'm Johnny On.", this.x - 250, this.y + 40);
+		ctx.fillText("                an aspiring programmer.", this.x - 250, this.y + 80);
 		ctx.globalAlpha = 1;
 	}
 }
@@ -119,11 +119,8 @@ function endText(x,y) {
 		gradient.addColorStop(1, "#000000");
 		ctx.fillStyle = gradient;
 		ctx.font = "40px Georgia";
-		ctx.fillText(" Johnny", this.x + 20 * 4 - 250, this.y + 40);
-		ctx.fillText("   programmer", this.x + 11 * 20 - 2 - 250, this.y + 80 - this.pUp);
-		if (this.gone) {
-			ctx.fillText(",", this.x + 20 * 11 - 250, this.y + 40);
-		}
+		ctx.fillText("       Johnny On", this.x + 20 * 4 - 250, this.y + 40);
+		//ctx.fillText("   programmer", this.x + 11 * 20 - 2 - 250, this.y + 80 - this.pUp);
 		
 	}
 }
@@ -141,7 +138,7 @@ function update(time = 0) {
 	ctx.fillStyle = "#bae1ff";
 	ctx.fillRect(0,0, canvas.width, canvas.height);
 	
-	if (timer > 3000 && eT.inLine) {
+	if (iT.a == 0) {
 		eT.draw();
 		for (b of bubbles) {
 			b.s.draw();
@@ -177,7 +174,7 @@ function update(time = 0) {
 		}
 	} else {
 		if (iT.a != 0) {
-			if (timer > 2000) {
+			if (timer > 5000) {
 				iT.a *= .90;
 			}
 			if (iT.a < .1) {
@@ -186,15 +183,8 @@ function update(time = 0) {
 			iT.draw();
 			eT.draw();
 		} else {
-			eT.gone = true;
-			eT.pUp += 1;
-			if (eT.pUp == 40) {
-				eT.inLine = true;
-			}
 			eT.draw();
-			
 		}
-		
 	}
 }
 

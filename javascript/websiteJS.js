@@ -174,7 +174,7 @@ function update(time = 0) {
 		}
 	} else {
 		if (iT.a != 0) {
-			if (timer > 5000) {
+			if (timer > 3500) {
 				iT.a *= .90;
 			}
 			if (iT.a < .1) {

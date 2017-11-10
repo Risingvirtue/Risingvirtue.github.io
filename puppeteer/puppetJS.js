@@ -4,15 +4,15 @@ var mousePos = {};
 var w = canvas.width / 3;
 var h = 40;
 var x = canvas.width / 4;
-var y = canvas.height / 6;
+var y = canvas.height / 4;
 var projects = [];
-projects.push(new line(w - Math.cos(-15 * Math.PI / 180) * w / 2,y  - Math.sin(-15 * Math.PI / 180) * w / 2,
+projects.push(new line(w - Math.cos(-5 * Math.PI / 180) * w / 2,y  - Math.sin(-5 * Math.PI / 180) * w / 2,
 						"database", 20, 20));
-projects.push(new line(w + Math.cos(-15 * Math.PI / 180) * w / 2, y  + Math.sin(-15 * Math.PI / 180) * w / 2,
+projects.push(new line(w + Math.cos(-5 * Math.PI / 180) * w / 2, y  + Math.sin(-5 * Math.PI / 180) * w / 2,
 						"database", -20, 20));
-projects.push(new line(w + Math.cos(60 * Math.PI / 180) * w / 2, y  - Math.sin(60 * Math.PI / 180) * w / 2,
+projects.push(new line(w + Math.cos(50 * Math.PI / 180) * w / 2, y  - Math.sin(50 * Math.PI / 180) * w / 2,
 						"database", -20, 20));
-projects.push(new line(w - Math.cos(60 * Math.PI / 180) * w / 2, y + Math.sin(60 * Math.PI / 180) * w / 2,
+projects.push(new line(w - Math.cos(50 * Math.PI / 180) * w / 2, y + Math.sin(50 * Math.PI / 180) * w / 2,
 						"database", 20, 20));
 resizeCanvas();
 
@@ -56,12 +56,12 @@ function collision(mouse, rectangle) {
 function drawCross() {
 	ctx.save();
 	ctx.translate(x + w / 2, y + h /2);
-	ctx.rotate(-Math.PI * 15 / 180);
+	ctx.rotate(-Math.PI * 5 / 180);
 	ctx.fillRect(-w / 2, -h / 2, w, h);
 	ctx.restore();
 	ctx.save();
 	ctx.translate(x + w / 2, y + h /2);
-	ctx.rotate(-Math.PI * 60 / 180);
+	ctx.rotate(-Math.PI * 50 / 180);
 	ctx.fillRect(-w / 2, -h / 2, w, h);
 	ctx.restore();
 }
@@ -69,7 +69,7 @@ function updateValues() {
 	w = canvas.width / 3;
 	h = 40;
 	x = canvas.width / 3;
-	y = canvas.height / 6;
+	y = canvas.height / 4;
 }
 
 function update() {
@@ -85,21 +85,21 @@ function update() {
 			p.adjust = Math.max(p.adjust - 1, 0);
 		}
 	}
-	projects[0].x = canvas.width / 2 - Math.cos(-15 * Math.PI / 180) * w / 2;
-	projects[0].y = canvas.height / 6 - Math.sin(-15 * Math.PI / 180) * w / 2;
+	projects[0].x = canvas.width / 2 - Math.cos(-5 * Math.PI / 180) * w / 2;
+	projects[0].y = canvas.height / 4 - Math.sin(-5 * Math.PI / 180) * w / 2;
 	projects[0].h = canvas.height / 4;
 	projects[0].draw();
 	
-	projects[1].x = canvas.width / 2 + Math.cos(-15 * Math.PI / 180) * w / 2;
-	projects[1].y = canvas.height / 6 + Math.sin(-15 * Math.PI / 180) * w / 2;
+	projects[1].x = canvas.width / 2 + Math.cos(-5 * Math.PI / 180) * w / 2;
+	projects[1].y = canvas.height / 4 + Math.sin(-5 * Math.PI / 180) * w / 2;
 	projects[1].h = canvas.height / 4;
 	projects[1].draw();
-	projects[2].x = canvas.width / 2 + Math.cos(60 * Math.PI / 180) * w / 2;
-	projects[2].y = canvas.height / 6 - Math.sin(60 * Math.PI / 180) * w / 2;
+	projects[2].x = canvas.width / 2 + Math.cos(50 * Math.PI / 180) * w / 2;
+	projects[2].y = canvas.height / 4 - Math.sin(50 * Math.PI / 180) * w / 2;
 	projects[2].h = canvas.height / 4;
 	projects[2].draw();
-	projects[3].x = canvas.width / 2 - Math.cos(60 * Math.PI / 180) * w / 2;
-	projects[3].y = canvas.height / 6 + Math.sin(60 * Math.PI / 180) * w / 2;
+	projects[3].x = canvas.width / 2 - Math.cos(50 * Math.PI / 180) * w / 2;
+	projects[3].y = canvas.height / 4 + Math.sin(50 * Math.PI / 180) * w / 2;
 	projects[3].h = canvas.height / 4;
 	projects[3].draw();
 	

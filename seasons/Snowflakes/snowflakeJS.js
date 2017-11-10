@@ -80,6 +80,7 @@ function timeStep() {
     if (flake.alpha < 0.01 || flake.height > canvas.height) {
         continue;
     }
+	
     //rotation
     ctx.save();
     flake.height += flake.velocity;
@@ -88,7 +89,7 @@ function timeStep() {
     ctx.rotate(flake.angle);
     flake.alpha  = flake.alpha * flake.fade;
     ctx.globalAlpha = flake.alpha;
-    ctx.drawImage(flake.image, -flake.size/2, -flake.size/2, flake.size, flake.size);
+    ctx.drawImage(flake.image, -flake.size / 2, -flake.size / 2, flake.size, flake.size);
     ctx.translate(-flake.xPos, -flake.height);
     ctx.restore();
     newSnowflakeStack.push(flake);

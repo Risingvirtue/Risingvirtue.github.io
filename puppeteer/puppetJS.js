@@ -66,7 +66,7 @@ function drawCross() {
 	ctx.stroke();
 	ctx.closePath();
 	ctx.beginPath();
-	ctx.arc(-w / 2 + 245, -h/2 + 20, 6, 0 , 2 * Math.PI, false);
+	ctx.arc(-w / 2 + x -20, -h/2 + 20, 6, 0 , 2 * Math.PI, false);
 	ctx.stroke();
 	//ctx.endPath();
 	//outline
@@ -91,7 +91,7 @@ function drawCross() {
 	ctx.stroke();
 	ctx.closePath();
 	ctx.beginPath();
-	ctx.arc(-w / 2 + 245, -h/2 + 20, 6, 0 , 2 * Math.PI, false);
+	ctx.arc(-w / 2 + x - 20, -h/2 + 20, 6, 0 , 2 * Math.PI, false);
 	ctx.stroke();
 	
 	

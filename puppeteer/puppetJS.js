@@ -6,9 +6,9 @@ var h = 40;
 var x = canvas.width / 4;
 var y = canvas.height / 4;
 var projects = [];
-projects.push(new line(w - Math.cos(-5 * Math.PI / 180) * w / 2,y  - Math.sin(-5 * Math.PI / 180) * w / 2,
+projects.push(new line(w - Math.cos(10 * Math.PI / 180) * w / 2,y  - Math.sin(10 * Math.PI / 180) * w / 2,
 						"database", 20, 20));
-projects.push(new line(w + Math.cos(-5 * Math.PI / 180) * w / 2, y  + Math.sin(-5 * Math.PI / 180) * w / 2,
+projects.push(new line(w + Math.cos(10 * Math.PI / 180) * w / 2, y  + Math.sin(10 * Math.PI / 180) * w / 2,
 						"database", -20, 20));
 projects.push(new line(w + Math.cos(50 * Math.PI / 180) * w / 2, y  - Math.sin(50 * Math.PI / 180) * w / 2,
 						"database", -20, 20));
@@ -54,16 +54,58 @@ function collision(mouse, rectangle) {
 }
 
 function drawCross() {
+	ctx.fillStyle = "#CC9900";
 	ctx.save();
 	ctx.translate(x + w / 2, y + h /2);
-	ctx.rotate(-Math.PI * 5 / 180);
-	ctx.fillRect(-w / 2, -h / 2, w, h);
+	ctx.rotate(-Math.PI * -10 / 180);
+	ctx.fillRect(-w / 2 , -h / 2 , w , h );
+	ctx.fillStyle = "#CC9900";
+	//circles
+	ctx.beginPath();
+	ctx.arc(-w/2 + 20, -h/2 + 20, 6, 0, 2 * Math.PI, false);
+	ctx.stroke();
+	ctx.closePath();
+	ctx.beginPath();
+	ctx.arc(-w / 2 + 245, -h/2 + 20, 6, 0 , 2 * Math.PI, false);
+	ctx.stroke();
+	//ctx.endPath();
+	//outline
+	ctx.beginPath();
+	ctx.strokeStyle = "#663300";
+	ctx.lineWidth = "3";
+	ctx.rect(-w / 2, -h / 2, w, h);
+	ctx.stroke();
+	ctx.strokeStyle = "black";
+	ctx.closePath();
+	ctx.fillStyle = "#CC9900";
 	ctx.restore();
+	
 	ctx.save();
 	ctx.translate(x + w / 2, y + h /2);
 	ctx.rotate(-Math.PI * 50 / 180);
 	ctx.fillRect(-w / 2, -h / 2, w, h);
+	
+	//circle
+	ctx.beginPath();
+	ctx.arc(-w/2 + 20, -h/2 + 20, 6, 0, 2 * Math.PI, false);
+	ctx.stroke();
+	ctx.closePath();
+	ctx.beginPath();
+	ctx.arc(-w / 2 + 245, -h/2 + 20, 6, 0 , 2 * Math.PI, false);
+	ctx.stroke();
+	
+	
+	//outline
+	ctx.beginPath();
+	ctx.strokeStyle = "#663300";
+	ctx.lineWidth = "3";
+	ctx.rect(-w / 2, -h / 2, w, h);
+	ctx.stroke();
+	ctx.strokeStyle = "black";
+	ctx.closePath();
+	
 	ctx.restore();
+	ctx.fillStyle = "black";
 }
 function updateValues() {
 	w = canvas.width / 3;
@@ -76,7 +118,7 @@ function update() {
 	requestAnimationFrame(update);
 	ctx.clearRect(0,0, canvas.width, canvas.height);
 	updateValues();
-	console.log(mousePos);
+	//console.log(mousePos);
 	for (p of projects) {
 		if (collision(mousePos, p.r) || collision(mousePos, p.originalR)) {
 			//console.log('yes');
@@ -85,18 +127,18 @@ function update() {
 			p.adjust = Math.max(p.adjust - 1, 0);
 		}
 	}
-	projects[0].x = canvas.width / 2 - Math.cos(-5 * Math.PI / 180) * w / 2;
-	projects[0].y = canvas.height / 4 - Math.sin(-5 * Math.PI / 180) * w / 2;
+	projects[0].x = canvas.width / 2 - Math.cos(10 * Math.PI / 180) * w / 2;
+	projects[0].y = canvas.height / 4 - Math.sin(10  * Math.PI / 180) * w / 2;
 	projects[0].h = canvas.height / 4;
 	projects[0].draw();
 	
-	projects[1].x = canvas.width / 2 + Math.cos(-5 * Math.PI / 180) * w / 2;
-	projects[1].y = canvas.height / 4 + Math.sin(-5 * Math.PI / 180) * w / 2;
+	projects[1].x = canvas.width / 2 + Math.cos(10 * Math.PI / 180) * w / 2;
+	projects[1].y = canvas.height / 4 + Math.sin(10  * Math.PI / 180) * w / 2;
 	projects[1].h = canvas.height / 4;
 	projects[1].draw();
 	projects[2].x = canvas.width / 2 + Math.cos(50 * Math.PI / 180) * w / 2;
 	projects[2].y = canvas.height / 4 - Math.sin(50 * Math.PI / 180) * w / 2;
-	projects[2].h = canvas.height / 4;
+	projects[2].h = canvas.height / 6;
 	projects[2].draw();
 	projects[3].x = canvas.width / 2 - Math.cos(50 * Math.PI / 180) * w / 2;
 	projects[3].y = canvas.height / 4 + Math.sin(50 * Math.PI / 180) * w / 2;

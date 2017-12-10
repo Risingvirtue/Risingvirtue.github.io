@@ -1,0 +1,73 @@
+img {
+	border-radius: 100%;
+	border-width: 5px;
+	
+}
+
+h2 {
+	text-decoration: overline;
+	
+}
+
+.underlined {
+      border-bottom: solid 2px #000;
+      display: inline;
+      padding-bottom: 1px;
+}
+
+
+
+div .odd {
+	background-color: #F0FFF0;
+}
+
+.snow {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.projects {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.fa {
+	font-size: 30px;
+}
+
+.p:hover  {
+	color: blue;
+}
+
+.interests {
+	font-size: 20px;
+}
+
+a {
+	color:black;
+	opacity: .85;
+}
+
+.icon {
+	width: 35px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: white;
+	border-radius: 10%;
+	color: white;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	background-color: black;
+}
+
+li {
+    display: inline;
+	margin: 10px;
+}
+
+li:hover {
+	opacity: .50;
+}

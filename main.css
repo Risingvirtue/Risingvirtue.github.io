@@ -21,6 +21,9 @@ div .odd {
 	background-color: #F0FFF0;
 }
 
+body {
+	font-family: Arial;
+}
 .snow {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -35,7 +38,8 @@ div .odd {
 }
 
 .p:hover  {
-	color: blue;
+	color: #6495ED;
+};
 }
 
 .interests {
@@ -60,7 +64,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-	background-color: black;
+	
 }
 
 li {
@@ -70,4 +74,25 @@ li {
 
 li:hover {
 	opacity: .50;
+}
+
+#contactGroup {
+	background-color: #515151;
+}
+
+.contact {
+	margin: 20px;
+}
+
+.copyright {
+	padding-top: 30px;
+}
+
+.btn {
+	background-color: #515151;
+	color:white;
+}
+
+.btn:hover {
+	color: #FFE4E1;
 }

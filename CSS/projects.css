@@ -1,0 +1,19 @@
+.underlined {
+      border-bottom: solid 3px #000;
+      display: inline;
+      padding-bottom: 1px;
+}
+
+h1 {
+	text-decoration: overline;
+	
+}
+
+.buffer {
+	margin: 20px;
+}
+
+.smallerBuffer {
+	margin: 15px;
+}
+

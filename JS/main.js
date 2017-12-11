@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var phoneReg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 		//alert("he");
 		if (name == "" || name == undefined) {
-			alert("Please enter a valid name");
+			alert("Please enter a name");
 		} else if (!phone.match(phoneReg)) {
 			alert("Please enter a valid phone number");
 		} else {

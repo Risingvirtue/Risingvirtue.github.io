@@ -14,8 +14,50 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type "text/css" href="../CSS/java.css">
-	<script type="text/javascript" src="../JS/java1.js"></script>
+	<script> 
+		$(document).ready(function() {
+			
+			$("#map").mouseover(function() {
+				$("#dMap").html("A* search, Rastering, Quad Trees, Routing, Data Structures");
+				$("#pMap").toggleClass("bot");
+			});
 	
+			$("#map").mouseout(function() {
+				$("#dMap").html("");
+				$("#pMap").toggleClass("bot");
+			});
+	
+			$("#percolation").mouseover(function() {
+		
+				$("#dPercolation").html("Weighted Quick Union, Data Visualization, Analysis");
+			});
+	
+			$("#percolation").mouseout(function() {
+				$("#dPercolation").html("");
+			});
+	
+			$("#seam").mouseover(function() {
+		
+				$("#dSeam").html("Pixel Energy Calculation, Minimum Cost Path, Seam Removal");
+				$("#pSeam").toggleClass("bot");
+			});
+	
+			$("#seam").mouseout(function() {
+				$("#dSeam").html("");
+				$("#pSeam").toggleClass("bot");
+			});
+			$("#database").mouseover(function() {
+				
+				$("#dDatabase").html("Database Design, Data Structures, Parsing, Query Implementation");
+			});
+	
+			$("#database").mouseout(function() {
+				$("#dDatabase").html("");
+			});
+		});
+		
+	</script>
+	<script type="text/javascript" src="../JS/newJava.js"></script>
 	</head>
 <body>
 	<div class="container-fluid">
@@ -27,12 +69,12 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
 				<i id = "heart" class="fa fa-heart buffer" aria-hidden="true"></i>
-				<p id="projects" class="number">0</p>
+				<p id="projects" class="number">15</p>
 				<p class="number">Projects Completed</p>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center odd">
 				<i class="fa fa-file-text-o buffer" aria-hidden="true"></i>
-				<p id="code" class="number">0</p>
+				<p id="code" class="number">3746</p>
 				<p class="number">Lines of Code</p>
 			</div>
 		</div>

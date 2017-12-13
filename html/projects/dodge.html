@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Shooter</title>
+		<link rel="stylesheet" type "text/css" href="../../CSS/project.css">
+		</style>
+	</head>
+
+	<body>
+		<a class="button" id="backButton" href="../project.html">Back</a></button>
+		<h1 id= "name">Dodge This!</h1>
+		<div id= "summary">
+		<p>	
+		<h2>Introduction</h2>
+		Dodge This! is a mini project that I coded while enroute a two hour plane ride. It was initially inspired by 
+		Ikaruga's unique color changing system where your ship cannot be hit by objects of the same color. 
+		I designed this game with nothing but a notebook and pencil and later implemented through javascript.
+		Controls are (W,A,S,D) to move and left click to change color.
+		<br>
+		<br>
+		
+		<h2>Movement and User Inputs</h2>
+		I used similar movement mechanics as in <a href="./shooter.html">Shooter</a>. User inputs are complex as in shooter,
+		only needing the left mouse button to play the game.
+		<br>
+		<br>
+		<h3>Collision</h3>
+		Collision was also similar to shooter. However, there was a big difference, when objects bounce off each other, their
+		trajectories change. Currently, changing the velocities is still a work in progress. Objects that overlap or collide in 
+		one frame will move a time step in the future with altered velocities so that they don't occupy similar spaces after bouncing.
+		
+		<br>
+		<br>
+		
+		<h2>Conclusion</h2>
+		This is an ongoing prototype. Features that I want to add are: correct implementation of bounce and a spacebar ability that teleports 
+		your player to a fixed distance away.
+		</p>
+		</div>
+		<a href="../../projectDemos/DodgeThis!/dodge.html">Demo</a>
+	</body>

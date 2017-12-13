@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Shooter</title>
+		<link rel="stylesheet" type "text/css" href="../../CSS/projects.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" type "text/css" href="../main.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+		<div class="text-center"style="margin: 10px">	
+			<h1 class="underlined">Shooter</h1>
+		</div>
+		<br><br>
+		<div id= "summary">
+		<p>	
+		<h2>Introduction</h2>
+		Shooter is a mini project where I toyed around with mouse cursor location, user input, and unit collision. It is a 
+		game where you are a player in a top down shooter trying to eliminate enemies. Controls are W,A,S,D to move and left
+		click to shoot.
+		<br>
+		<br>
+		
+		<h2>Movement and User Inputs</h2>
+		My initial movement implementation used a keyboard event listener that detected when the movement keys (W,A,S,D) were
+		pressed and changed the coordinates of the controller manually. This lead to sticky and unnatural movements. 
+		<br>
+		<br>
+		Instead, I used an animation frame that updated location every frame and used the keyboard event listener as a helper 
+		to identifywhich keys were pushed down at that particular frame in time. This worked a lot better, and along with 
+		momentum, created a smooth experience.
+		
+		
+		<br>
+		<br>
+		<h2>Collision</h2>
+		Collision for circular objects is pretty simple: if the distance between them is less than the sum of their radii, 
+		they collide. The difficultly was in creating new enemies that didn't collide (a way to keep track) and implementing
+		a damage system that continued with collision.
+		<br>
+		<br>
+		
+		<h3>Conclusion</h3>
+		This is an ongoing prototype. Features that I want to add are: a workable restart button, movement in enemies, and enemy fire.
+		</p>
+		</div>
+		<a href="../../projectDemos/Shooter/shooter.html">Demo</a>
+		<a href="../../projectDemos/DodgeThis!/dodge.html">Demo</a>
+		
+	</body>

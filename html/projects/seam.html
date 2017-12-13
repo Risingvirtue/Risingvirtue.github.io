@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Seam Carver</title>
+		<link rel="stylesheet" type "text/css" href="../../CSS/projects.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" type "text/css" href="../main.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+	</head>
+
+	<body>
+		<div class="container-fluid">
+		<div class="text-center"style="margin: 10px">	
+			<h1 class="underlined">Seam Carving</h1>
+		</div>
+		<br>
+		<div id= "summary">
+		<h2>Introduction</h2>
+			<p>In this project, I devised a way to carve seams through an image. This is useful for shrinking images without losing
+			much information. Each seam should be one pixel of width or height connected with one another. Everytime an image shrinks 
+			in width or height, a selective seam is removed.
+			</p>
+		<h2>Energy</h2>
+			<p>The energy is easily calculated. For each pixel, the energy is the sum of the difference squared of all the pixels surrounding it.
+			</p>
+		<h2>Algorithm and Seam Carving</h2>
+			<p>Finding seams was a much more difficult task. A correct vertical seam corresponds to the minimum energy path from top to bottom. Each pixel 
+			must be adjacent (or at a diagonal) to each other pixel in the path. The trick is the work from the bottom of the seam to the top, adding
+			the minimum path for each bottom pixel and deciding which path has the lower energy total.
+			
+			The seam is then removed is the process repeats until the image is small enough. Horizonal seams were similar in approach, with the matrix of pixels just transposed.
+			</p>
+			
+		<h2>Conclusion</h2>
+			<p>Finally, the end product is able to reduce images in size without much loss of information.
+			</p>
+		</div>
+		
+		<a href="http://datastructur.es/sp17/materials/hw/hw5/hw5.html">Link for more information</a>
+		</div>
+	</body>

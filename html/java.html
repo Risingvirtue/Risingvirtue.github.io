@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+	<title>Java Projects</title>
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- Google Icons-->
@@ -30,10 +31,12 @@
 			$("#percolation").mouseover(function() {
 		
 				$("#dPercolation").html("Weighted Quick Union, Data Visualization, Analysis");
+				$("#pPercolation").toggleClass("bot");
 			});
 	
 			$("#percolation").mouseout(function() {
 				$("#dPercolation").html("");
+				$("#pPercolation").toggleClass("bot");
 			});
 	
 			$("#seam").mouseover(function() {
@@ -47,13 +50,15 @@
 				$("#pSeam").toggleClass("bot");
 			});
 			$("#database").mouseover(function() {
-				
 				$("#dDatabase").html("Database Design, Data Structures, Parsing, Query Implementation");
+				
 			});
 	
 			$("#database").mouseout(function() {
 				$("#dDatabase").html("");
+				
 			});
+			
 		});
 		
 	</script>
@@ -88,24 +93,35 @@
 			<div id="map" class="odd col-lg-3 col-md-3 col-sm-12 col-xs-12 highlight">
 				<i class="fa fa-map buffer" aria-hidden="true"></i>	
 				<p id="pMap" class="bot">Bear Maps</p>
-				<p id="dMap" style="font-size:15px"></p>
+				<label class="col-sm-3 col-xs-3"></label>
+				<p class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="dMap" style="font-size:15px"></p>
 			</div>
 			</a>
+			<a href="./projects/percolation.html">
 			<div id="percolation" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 highlight">
 				<i class="fa fa-tint buffer" aria-hidden="true"></i>
-				<p>Percolation</p>
-				<p id="dPercolation" style="font-size:15px"></p>
+				<p id="pPercolation" class="bot">Percolation</p>
+				<label class="col-sm-3 col-xs-3"></label>
+				<p class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="dPercolation" style="font-size:15px"></p>
 			</div>
+			</a>
+			<a href="./projects/seam.html">
 			<div id="seam" class="odd col-lg-3 col-md-3 col-sm-12 col-xs-12 highlight">
 				<i class="fa fa-picture-o buffer" aria-hidden="true"></i>
 				<p id="pSeam" class="bot">Seam Carving</p>
-				<p id="dSeam" style="font-size:15px"></p>
+				<label class="col-sm-3 col-xs-3"></label>
+				<p class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="dSeam" style="font-size:15px"></p>
 			</div>
+			</a>
+			<a href="./projects/DD.html">
 			<div id="database" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 highlight">
 				<i class="fa fa-database buffer" aria-hidden="true"></i>
-				<p>Database</p>
-				<p id="dDatabase" style="font-size:15px"></p>
+				<p id="pDatabase">Database</p>
+				<label class="col-sm-3 col-xs-3"></label>
+				<p class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="dDatabase" style="font-size:15px"></p>
 			</div>
+			</a>
+			
 		</div>
 		
 		

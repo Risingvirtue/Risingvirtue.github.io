@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Percolation</title>
+		<link rel="stylesheet" type "text/css" href="../../CSS/projects.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" type "text/css" href="../main.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+	</head>
+
+	<body>
+		<div class="container-fluid">
+		<div class="text-center"style="margin: 10px">	
+			<h1 class="underlined">Percolation</h1>
+		</div>
+		<br>
+		<div id= "summary">
+		<h2>Introduction</h2>
+			<p>In this project, I estimate the percolation threshold, or percent of empty space within a porous media in order for 
+			liquid to flow through it. This is done through many simulations of a 20x20 grid and randomly removing blocks until it percolates.
+			
+			</p>
+		<h2>Weighted Quick Union</h2>
+			<p>In order to determine if my system percolates, I would need someway of determining if there is a path connecting the top layer and bottom layer.
+			This problem is perfect for invoking a weighted quick union, inserting blocks into the data structure until it percolates. I realized that by adding two more nodes, one above the top layer that connected to all the top blocks and one at the bottom, 
+			I could determine if a system percolates, the top and bottom nodes must connect.
+			</p>
+		<h2>Proof</h2>
+			<p>A computational proof comes from the Monte Carlo simulation where blocks are chosen randomly until the system percolates. Iterating this simulation many times
+			would give an average percentage of blocks that are missing from a system that percolates. Then, using a confidence interval derived from Chebyeshev's Inequality, 
+			a range can be determined for a 95% confidence interval.
+			</p>
+			
+		<h2>Conclusion</h2>
+			<p>Finally, the end product is both a simulation of percolation and a computer assisted estimate of the percolation threshold.
+			</p>
+		</div>
+		
+		<a href="http://datastructur.es/sp17/materials/hw/hw2/hw2.html">Link for more information</a>
+		</div>
+	</body>

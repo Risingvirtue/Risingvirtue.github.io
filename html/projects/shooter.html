@@ -16,12 +16,14 @@
 	</head>
 
 	<body>
-		<div class="container-fluid">
+		<div class="container-fluid" style="padding-top:10px">
 		<div class="text-center"style="margin: 10px">	
 			<h1 class="underlined">Shooter</h1>
 		</div>
 		<br><br>
-		<div id= "summary">
+		<div class="row">
+		<label class="col-lg-3 col-md-3"></label>
+		<div id="summary" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 		<p>	
 		<h2>Introduction</h2>
 		Shooter is a mini project where I toyed around with mouse cursor location, user input, and unit collision. It is a 
@@ -36,7 +38,7 @@
 		<br>
 		<br>
 		Instead, I used an animation frame that updated location every frame and used the keyboard event listener as a helper 
-		to identifywhich keys were pushed down at that particular frame in time. This worked a lot better, and along with 
+		to identify which keys were pushed down at that particular frame in time. This worked a lot better, and along with 
 		momentum, created a smooth experience.
 		
 		
@@ -52,8 +54,11 @@
 		<h3>Conclusion</h3>
 		This is an ongoing prototype. Features that I want to add are: a workable restart button, movement in enemies, and enemy fire.
 		</p>
-		</div>
+		
 		<a href="../../projectDemos/Shooter/shooter.html">Demo</a>
 		<a href="../../projectDemos/DodgeThis!/dodge.html">Demo</a>
+		</div>
+		</div>
+		</div>
 		
 	</body>

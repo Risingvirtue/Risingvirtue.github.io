@@ -15,6 +15,5 @@ $(document).ready(function() {
 			window.open('mailto:johnnyon@berkeley.edu?subject=' + subject + '&body=' + message);
 		}
 		
-		
 	});
 });

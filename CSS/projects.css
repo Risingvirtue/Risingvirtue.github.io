@@ -1,12 +1,18 @@
-.underlined {
-      border-bottom: solid 3px #000;
-      display: inline;
-      padding-bottom: 1px;
+h1 {
+	padding-top: 2px;
+	padding-left: 70px;
+	padding-right: 70px;
+
 }
 
-h1 {
-	text-decoration: overline;
-	
+.underlined {
+	  
+	  
+      display: inline;
+      padding-bottom: 5px;
+	  border-style: solid;
+	  border-image: linear-gradient(90deg, white, black, white) 10;
+	  border-image-width: 1.5px 0px 1.5px 0px;
 }
 
 .buffer {

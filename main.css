@@ -5,14 +5,21 @@ img {
 }
 
 h2 {
-	text-decoration: overline;
+	padding-top: 7px;
+	padding-left: 70px;
+	padding-right: 70px;
+	
 	
 }
 
 .underlined {
-      border-bottom: solid 2px #000;
+	  
+     
       display: inline;
-      padding-bottom: 1px;
+      padding-bottom: 7px;
+	  border-style: solid;
+	  border-image: linear-gradient(90deg, white, black, white) 10;
+	  border-image-width: 1.5px 0px 1.5px 0px;
 }
 
 
@@ -99,4 +106,9 @@ li:hover {
 
 .red {
 	border-color:red;
+}
+
+.row {
+	margin-bottom: 50px;
+	
 }

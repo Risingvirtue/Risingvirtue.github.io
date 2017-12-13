@@ -96,3 +96,7 @@ li:hover {
 .btn:hover {
 	color: #FFE4E1;
 }
+
+.red {
+	border-color:red;
+}

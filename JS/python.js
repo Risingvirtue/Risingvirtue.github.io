@@ -15,10 +15,12 @@ $(document).ready(function() {
 	
 	$("#ants").mouseover(function() {
 		$("#dAnts").html("Object Oriented Programming, Inheritance");
+		$("#pAnts").toggleClass("bot");
 	});
 	
 	$("#ants").mouseout(function() {
 		$("#dAnts").html("");
+		$("#pAnts").toggleClass("bot");
 	});
 	
 	$("#classification").mouseover(function() {
@@ -33,10 +35,12 @@ $(document).ready(function() {
 	
 	$("#scheme").mouseover(function() {
 		$("#dScheme").html("Parsing, Evaluation");
+		$("#pScheme").toggleClass("bot");
 	});
 	
 	$("#scheme").mouseout(function() {
 		$("#dScheme").html("");
+		$("#pScheme").toggleClass("bot");
 	});
 });
 function update() {

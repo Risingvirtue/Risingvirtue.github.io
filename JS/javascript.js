@@ -14,10 +14,12 @@ $(document).ready(function() {
 	
 	$("#shooter").mouseover(function() {
 		$("#dShooter").html("Canvas, Collision, User Input, Score Keeping");
+		$("#pShooter").toggleClass("bot");
 	});
 	
 	$("#shooter").mouseout(function() {
 		$("#dShooter").html("");
+		$("#pShooter").toggleClass("bot");
 	});
 	
 	$("#simon").mouseover(function() {
@@ -31,10 +33,12 @@ $(document).ready(function() {
 	});
 	$("#puzzle").mouseover(function() {
 		$("#dPuzzle").html("Mouse Position, Canvas Manipulation, Quick Union");
+		$("#pPuzzle").toggleClass("bot");
 	});
 	
 	$("#puzzle").mouseout(function() {
 		$("#dPuzzle").html("");
+		$("#pPuzzle").toggleClass("bot");
 	});
 });
 function update() {

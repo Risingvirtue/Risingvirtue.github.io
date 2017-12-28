@@ -1,7 +1,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-var menuCanvas = document.getElementById('menu');
-var menuCtx = menuCanvas.getContext("2d");
+//var menuCanvas = document.getElementById('menu');
+//var menuCtx = menuCanvas.getContext("2d");
 position = [canvas.width / 2, canvas.height / 2];
 var keys = [false, false, false, false];
 var x = 0,
@@ -406,24 +406,10 @@ function getMousePos(canvas, evt) {
 
 //var menuMousePos = {x: 0, y:0};
 function drawMenu() {
-	menuCtx.clearRect(0,0, menuCanvas.width, menuCanvas.height);
-	menuCtx.moveTo(menuCanvas.width / 4, 0);
-	menuCtx.lineTo(menuCanvas.width / 4, menuCanvas.height);
-	menuCtx.stroke();
-	menuCtx.moveTo(menuCanvas.width / 2, 0);
-	menuCtx.lineTo(menuCanvas.width / 2, menuCanvas.height);
-	menuCtx.stroke();
-	menuCtx.moveTo(menuCanvas.width * 3 / 4, 0);
-	menuCtx.lineTo(menuCanvas.width * 3 / 4, menuCanvas.height);
-	menuCtx.stroke();
-	menuCtx.font = "25px Arial";
-	menuCtx.fillText("Restart", 60 , menuCanvas.height / 2);
-	menuCtx.fillText("Number Killed", 20 + menuCanvas.width / 4 , menuCanvas.height / 2);
-	menuCtx.fillText('' + numKilled, 90 + menuCanvas.width / 4 , menuCanvas.height / 2 + 25);
-	menuCtx.fillText("Damage Taken", 20 + menuCanvas.width / 2 , menuCanvas.height / 2);
-	menuCtx.fillText('' + damageTaken, 90 + menuCanvas.width / 2 , menuCanvas.height / 2 + 25);
-	menuCtx.fillText("Accuracy", 50 + menuCanvas.width * 3 / 4 , menuCanvas.height / 2);
-	menuCtx.fillText('' + percent(accuracy) + '%', 60 + menuCanvas.width * 3 / 4 , menuCanvas.height / 2 + 25);
+	$("#numKilled").html(numKilled);
+	$("#damage").html(damageTaken);
+	$("#accuracy").html(percent(accuracy));
+	
 }
 function percent(number) {
 	let temp = '' + number;

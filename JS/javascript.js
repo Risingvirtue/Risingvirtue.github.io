@@ -1,44 +1,56 @@
 var numProjects = 0; //to 8
 var numCode = 0; // to 3354
 $(document).ready(function() {
+	$("#dSeason").html("Canvas, Animation, Rotation, Object Oriented Programming");
+	$("#dShooter").html("Canvas, Collision, User Input, Score Keeping");
+	$("#dSimon").html("User Input, Button Sequencing, HTML formatting, Bootstrap");
+	$("#dPuzzle").html("Mouse Position, Canvas Manipulation, Quick Union");
+	$("#dDraw").html("NodeJS, Socket.io, Server Management, Canvas, Pixel Manipulation");
+	$("#dSeason").css("visibility", "hidden");
+	$("#dShooter").css("visibility", "hidden");
+	$("#dSimon").css("visibility", "hidden");
+	$("#dPuzzle").css("visibility", "hidden");
+	$("#dDraw").css("visibility", "hidden");
 	interval = setInterval(update, 50);
 	$("#season").mouseover(function() {
-		$("#dSeason").html("Canvas, Animation, Rotation, Object Oriented Programming");
-		$("#pSeason").toggleClass("bot");
+		$("#dSeason").css("visibility", "visible");
+	
 	});
 	
 	$("#season").mouseout(function() {
-		$("#dSeason").html("");
-		$("#pSeason").toggleClass("bot");
+		$("#dSeason").css("visibility", "hidden");
+		
 	});
 	
 	$("#shooter").mouseover(function() {
-		$("#dShooter").html("Canvas, Collision, User Input, Score Keeping");
-		$("#pShooter").toggleClass("bot");
+		$("#dShooter").css("visibility", "visible");
 	});
 	
 	$("#shooter").mouseout(function() {
-		$("#dShooter").html("");
-		$("#pShooter").toggleClass("bot");
+		$("#dShooter").css("visibility", "hidden");
 	});
 	
 	$("#simon").mouseover(function() {
-		$("#dSimon").html("User Input, Button Sequencing, HTML formatting, Bootstrap");
-		$("#pSimon").toggleClass("bot");
+		$("#dSimon").css("visibility", "visible");
 	});
 	
 	$("#simon").mouseout(function() {
-		$("#dSimon").html("");
-		$("#pSimon").toggleClass("bot");
+		$("#dSimon").css("visibility", "hidden");
 	});
 	$("#puzzle").mouseover(function() {
-		$("#dPuzzle").html("Mouse Position, Canvas Manipulation, Quick Union");
-		$("#pPuzzle").toggleClass("bot");
+		$("#dPuzzle").css("visibility", "visible");
 	});
 	
 	$("#puzzle").mouseout(function() {
-		$("#dPuzzle").html("");
-		$("#pPuzzle").toggleClass("bot");
+		$("#dPuzzle").css("visibility", "hidden");
+	});
+	
+	$("#draw").mouseover(function() {
+		$("#dDraw").css("visibility", "visible");
+	});
+	
+	$("#draw").mouseout(function() {
+		$("#dDraw").css("visibility", "hidden");
 	});
 });
 function update() {

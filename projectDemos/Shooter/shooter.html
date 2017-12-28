@@ -3,18 +3,44 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Shooter</title>
-		<style type="text/css">
-		</style>
-		<script type="text/javascript">
-		</script>
-	</head>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		</head>
 
 	<body>
-		<div>
-		<canvas id="menu" width=800 height=100 style="border:1px solid #000000;"> </canvas> 
+		<div class="container-fluid">
+			<div class="row">
+				<label class="col-lg-3 col-md-3"></label>
+				<div class="col-lg-6 col-md-6" style="background-color: #eee">
+					<div class="col-lg-3 col-md-3">
+						<p>Restart?</p>
+					</div>
+					<div class="col-lg-3 col-md-3">
+						<p>Enemies Killed: <span id="numKilled"></span></p>
+					</div>
+					<div class="col-lg-3 col-md-3">
+						<p>Damage Taken: <span id="damage"></span><p>
+					</div>
+					<div class="col-lg-3 col-md-3">
+						<p>Accuracy:<span id="accuracy"></span></p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+			<label class="col-lg-3 col-md-3"></label>
+			<canvas class='text-center' id="canvas" class="col-lg-6 col-md-6"></canvas>
+			</div>
 		</div>
-		<canvas id="canvas" width=800 height=600></canvas>
-
 
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="shooterJS.js"></script>

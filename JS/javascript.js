@@ -6,11 +6,13 @@ $(document).ready(function() {
 	$("#dSimon").html("User Input, Button Sequencing, HTML formatting, Bootstrap");
 	$("#dPuzzle").html("Mouse Position, Canvas Manipulation, Quick Union");
 	$("#dDraw").html("NodeJS, Socket.io, Server Management, Canvas, Pixel Manipulation");
+	$("#dStock").html("AngularJS, Google Chart API, Stock API, Stack, Interval");
 	$("#dSeason").css("visibility", "hidden");
 	$("#dShooter").css("visibility", "hidden");
 	$("#dSimon").css("visibility", "hidden");
 	$("#dPuzzle").css("visibility", "hidden");
 	$("#dDraw").css("visibility", "hidden");
+	$("#dStock").css("visibility", "hidden");
 	interval = setInterval(update, 50);
 	$("#season").mouseover(function() {
 		$("#dSeason").css("visibility", "visible");
@@ -52,6 +54,15 @@ $(document).ready(function() {
 	$("#draw").mouseout(function() {
 		$("#dDraw").css("visibility", "hidden");
 	});
+	
+	$("#stock").mouseover(function() {
+		$("#dStock").css("visibility", "visible");
+	});
+	
+	$("#stock").mouseout(function() {
+		$("#dStock").css("visibility", "hidden");
+	});
+	
 });
 function update() {
 	numProjects += 1;

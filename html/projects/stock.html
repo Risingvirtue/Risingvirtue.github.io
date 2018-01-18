@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang "en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Stock</title>
+		<link rel="stylesheet" type "text/css" href="../../CSS/projects.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" type "text/css" href="../main.css">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container-fluid" style="padding-top:10px">
+		<div class="text-center"style="margin: 10px">	
+			<h1 class="underlined">Stock Simulator</h1>
+		</div>
+		<br><br>
+		<div class="row">
+		<label class="col-lg-3 col-md-3"></label>
+		<div id="summary" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<p>	
+		<h2>Introduction</h2>
+		I was initially intrigued by day trading and the concept of recognizing patterns in candlestick charts
+		in order find the right time to buy into a stock and the right time to sell. I researched on stock market
+		simulations but was always disappointed, since it usually displayed in real time with a one to one ratio. I 
+		wanted to create a quicker application while also using real world data. I decided to use AngularJS as my 
+		framework because its two way binding really fit well in this application.
+		<br>
+		<br>
+		
+		<h2>Stock and Google Charts API</h2>
+		The hardest part of the project was to find APIs that allowed for historical data in stocks and a way to graph it.
+		I used Alphavantage's API for stock history. It is a pretty decent API, however it takes around 5 to 30 seconds to load in
+		data, more if I request a full output. I used Google's chart API to draw candlesticks. With data from the stock API, I parsed
+		it into time, low, open, close, and high and inserted each column into the table. The only issue was wick color, as the Google
+		chart API did not allow for rising and falling wicks to be colored differently.
+	
+		<br>
+		<br>
+		<h2>Chart</h2>
+		To simulate real time, I created a stack of max size 20. After each update, I would add to the stack and removed the last item if
+		it was over the max size. By pushing to the Google chart API, it imitates what stocks would do in in one second intervals.
+
+		<br>
+		<br>
+		
+		<h3>Conclusion</h3>
+		All in all, this was a very fun and rewarding project using AngularJS, google chart API, and alphadvantage API. Challenges including 
+		reviewing ng-class and other directives, understanding the APIs available, and creating a user friendly display for playing the stock 
+		market game. Enjoy!
+		</p>
+		<a href="../../stock/stock.html">Demo</a>
+		</div>
+		</div>
+		</div>
+		
+	</body>

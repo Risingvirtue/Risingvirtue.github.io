@@ -274,8 +274,7 @@ function enemy(x, y, size) {
 		ctx.fillStyle = 'black';
 		ctx.globalAlpha = 1;
 	}
-	
-	
+
 }
 
 function checkCollision(tempX, tempY) {

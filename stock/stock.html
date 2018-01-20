@@ -1,0 +1,138 @@
+<!Doctype html>
+<html ng-app="stockApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<link rel="stylesheet" type "text/css" href="stock.css">
+		<script src="stock.js"></script>
+		
+	</head>
+	<body>
+		<div class="container-fluid" ng-controller="stockController">
+			<div id="loading" class="text-center" style="left:50%">
+				<i class="fa fa-spinner fa-pulse fa-3x fa-fw loading"></i>
+				<input id="start" type="submit" value="Start!" class="btn start"  ng-click="startUpdate()"></input>
+				
+		
+			</div>
+			
+			<div class="text-center"> {{symbol}} </div>
+			<div class="text-center">Current Price: {{price | currency}}</div>
+			<div class="text-center">Spending Power: {{total | currency}}</div>
+			<div class="row">
+			<label class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></label>
+			<div id="chartDiv" class="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
+			</div>
+			<div class="text-center">
+				
+				<p>Profits: 
+					<span ng-class="{'green': shareTotal + total > original, 'red': shareTotal + total < original}">{{shareTotal + total | currency}} 
+						<span ng-if="shareTotal + total != original">
+							<span ng-if="shareTotal + total > original">▲</span>
+							<span ng-if="shareTotal + total < original">▼</span>
+							{{(shareTotal + total) * 100/ original - 100| number:2}} %
+						</span>
+					</span>
+				</p>
+			</div>
+			
+			<div class="row">
+				<label class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></label>
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+					
+					<form class="form col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-submit="buyShares()">
+						
+					
+						<input type="submit" value="Buy"class="btn buy"></input>
+						<input class="buy" type="text" placeholder="Number of Shares" ng-model="buy"></input>
+						
+					</form>
+					
+					<form class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form" ng-submit="sellShares()">
+						<input type="submit" value="Sell" class="btn sell"></input>
+						<input class="sell" type="text" placeholder="Number of Shares" ng-model="sell"></input>
+					</form>
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+						<span style="margin: 0">Total:
+						<span ng-if="buy == 0 || buy == ''">$0.00</span>
+						<span style="margin: 0" ng-if="buy * price <= total && buy > 0" class="green">{{buy * price | currency}}</span>
+						<span style="margin: 0" ng-if="buy * price > total" class="red">Buying too many shares</span>
+						<span style="margin: 0" ng-if="buy < 0" class="red">Insert a positive number</span>
+						</span>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+						<span style="margin: 0">Total:
+							<span ng-if="sell == 0 || sell == ''">$0.00</span>
+							<span ng-if="bought.quantity >= sell && sell > 0" ng-class="{'red': price < bought.price, 'green': price > bought.price}">{{sell * price | currency}}</span>
+							<span ng-if="bought.quantity < sell" class="red">Selling too many shares</span>
+							<span ng-if="sell < 0" class="red">Insert a positive number</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<table style="width:100%">
+				<tr>
+					<th>Symbol</th>
+					<th>Qty</th> 
+					<th>Avg Price</th>
+					<th>Profit</th>
+				</tr>
+				<tr>
+					<td>{{bought.symbol}}</td>
+					<td>{{bought.quantity}}</td> 
+					<td>{{bought.price | currency}}</td>
+					<td ng-class="{'green': bought.quantity * price - shareTotal > 0, 'red': bought.quantity * price - shareTotal < 0}">{{bought.quantity * price - shareTotal | currency}}</td>
+				</tr>	
+			</table>
+				
+			<!-- The Modal -->
+			<div id="myModal" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content text-center">
+					<form class="row form" ng-submit="info()">
+						<div class="form-group">
+							<label>Symbol</label>
+							<select class="form-control" ng-model="symbol">
+								<option ng-repeat="s in symbols" value = "{{s}}">{{s}}</option>
+							</select>
+							<div ng-if="symbol === undefined && infoPressed" class="red">Please select a symbol.</div>
+							
+						</div>
+						<div class="form-group">
+							<label>Chart Interval</label>
+							<select class="form-control
+							" ng-model="chartInterval">
+								<option value = 1>1 minute</option>
+								<option value = 5>5 minutes</option>
+								<option value = 2>1 day</option>
+							</select>
+							<div ng-if="chartInterval === undefined && infoPressed" class="red">Please select a symbol.</div>
+						</div>
+						<div class="form-group">
+							<label>Tick Interval</label>
+							<select class="form-control" ng-model="tickInterval">
+								<option ng-repeat="i in intervals" value = "{{i}}">{{i}} seconds</option>
+							</select>
+							<div ng-if="tickInterval === undefined && infoPressed" class="red">Please select a symbol.</div>
+						</div>
+						<input type="submit" value="Play!" class="btn"></input>
+					</form>
+				</div>
+			</div>
+			
+			
+		</div>
+	</body>
+	
+</html>

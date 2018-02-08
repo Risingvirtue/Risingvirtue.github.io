@@ -66,12 +66,12 @@ $(document).ready(function() {
 });
 function update() {
 	numProjects += 1;
-	numCode += 418 + (4532 / 8);
+	numCode += 1862;
 	$("#projects").html(numProjects);
 	$("#code").html(numCode);
 	
 	if (numProjects == 8) {
-		numCode = 3354 + 4532;
+		numCode = 14889;
 		$("#code").html(numCode);
 		clearInterval(interval);
 	}

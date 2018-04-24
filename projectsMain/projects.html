@@ -1,0 +1,161 @@
+<!Doctype HTML>
+
+<html>
+	<head>
+		<title>Projects</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+		<link rel="stylesheet" type "text/css" href="projects.css">
+	</head>
+	
+	<body>
+		<div id="wrapper">
+			<div class="width">
+				<h1>Projects</h1>
+			</div>
+			<div class="width">
+				<ul class="select">
+					<li class= "button-style" id="all" onclick="selectButton('all')">
+						<span>Show All</span>
+						<div class="top loading-select"></div>
+						<div class="bottom loading-select"></div>
+					</li>
+					<li class= "button-style" id="java" onclick="selectButton('java')">
+						<span>Java</span>
+						<div class="top loading-select"></div>
+						<div class="bottom loading-select"></div>
+					</li>
+					<li class= "button-style" id="python" onclick="selectButton('python')">
+						<span>Python</span>
+						<div class="top loading-select"></div>
+						<div class="bottom loading-select"></div>
+					</li>
+					<li class= "button-style" id="javascript" onclick="selectButton('javascript')">
+						<span>JavaScript</span>
+						<div class="top loading-select"></div>
+						<div class="bottom loading-select"></div>
+					</li>
+				</ul>
+			</div>
+			<br>
+			<br>
+			<div class="width">
+				<ul class="projects">
+					<li class="javascript">
+						<div class="text">
+							<div class="bold">Seasons</div>
+							<div class="describe">Canvas, Animation, Rotation, OOP</div>
+						</div>
+						
+						<div id='seasons-link' class="button button-style">
+							
+							<span>More Info</span>
+							<div class="top loading-select"></div>
+							<div class="bottom loading-select"></div>
+						</div>
+						<div class="img">
+							<img id='seasons' src="../img/seasons.png"></img>
+						</div>
+					</li>
+					<li class="javascript">
+						<div class="text">
+							<div class="bold">Draw!</div>
+							<div class="describe">NodeJS, Socket.io, Server Management, Canvas, Pixel Manipulation</div>
+						</div>
+						<div id='draw-link' class="button button-style">
+							<span>More Info</span>
+							<div class="top loading-select"></div>
+							<div class="bottom loading-select"></div>
+						</div>
+						<div class="img">
+							<img id='draw' src="../img/draw.png"></img>
+						</div>
+					</li>
+					<li class="javascript">
+						<div class="text">
+							<div class="bold">Stock Game</div>
+							<div class="describe">AngularJS, Google Charts API, Stock API</div>
+						</div>
+						<div id='stock-link' class="button button-style">
+							<span>More Info</span>
+							<div class="top loading-select"></div>
+							<div class="bottom loading-select"></div>
+						</div>
+						<div class="img">
+							<img id='stock' src="../img/stock.png"></img>
+						</div>
+					</li>
+					<li class="java">
+						<div class="text">
+							<div class="bold">Percolation</div>
+							<div class="describe">Weighted Quick Union, Data Visualization, Analysis</div>
+						</div>
+						<div id='percolation-link' class="button button-style">
+							<span>More Info</span>
+							<div class="top loading-select"></div>
+							<div class="bottom loading-select"></div>
+						</div>
+						<div class="img">
+							<img id='percolation' src="../img/percolation.png"></img>
+						</div>
+					</li>
+					
+					<li class="java">
+						<div class="text">
+							<div class="bold">Bear Maps</div>
+							<div class="describe">A* search, Rastering, Quad Trees, Routing, Data Structures</div>
+						</div>
+						<div id="bear-link" class="button button-style">
+							<span>More Info</span>
+							<div class="top loading-select"></div>
+							<div class="bottom loading-select"></div>
+						</div>
+						<div class="img">
+							<img id='bearMaps' src="../img/bearMaps.png"></img>
+						</div>
+					</li>
+					
+					<li class="python">
+						<div class="text">
+							<div class="bold">Ants</div>
+							<div class="describe">OOP, Inheritance</div>
+						</div>
+						<div id="ants-link" class="button button-style">
+							<span>More Info</span>
+							<div class="top loading-select"></div>
+							<div class="bottom loading-select"></div>
+						</div>
+						<div class="img">
+							<img id='ants' src="../img/ants.png"></img>
+						</div>
+					</li>
+					<li class="javascript">
+						<div class="text">
+							<div class="bold">Photo Transpose</div>
+							<div class="describe">NodeJS, Canvas, Pixel Manipulation, File Writing</div>
+						</div>
+						<div id ="photo-link" class="button button-style">
+							<span>More Info</span>
+							<div class="top loading-select"></div>
+							<div class="bottom loading-select"></div>
+						</div>
+						<div class="img">
+							<img id='photoTranspose' src="../img/photoTranspose.png"></img>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="right" class="loading"></div>
+			<div id="left" class="loading"></div>
+			<div id="loading-text">Loading JavaScript Projects</div>
+		</div>
+		
+	
+		<script src="projects.js"></script>
+	</body>
+</html>

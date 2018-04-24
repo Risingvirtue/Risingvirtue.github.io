@@ -115,11 +115,9 @@ canvas.height = 720;
 generateTo100(leafStack);
 
 
-console.log(leafStack);
-
 //ctx.drawImage(leafStack[0].image, 0, 0);
 //need velocity, wind, fade
-setInterval(timeStep, 100);
+
 function timeStep() {
   ctx.clearRect(0,0, canvas.width, canvas.height);
   ctx.drawImage(background, 0 , 0 , canvas.width, canvas.height);
@@ -150,7 +148,9 @@ function timeStep() {
 
 }
 
-
+$(document).ready(function() {
+	setInterval(timeStep, 100);
+})
 
 /*
 

@@ -1,0 +1,210 @@
+body {
+	font-size: 20px;
+	font-family: Helvetica;
+	color: white;
+	background-color: #202020;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #444; 
+}
+
+ul {
+  list-style-type: none;
+  padding-left:0;
+
+}
+
+.javascript {
+	transition:all 1s;
+}
+
+.select li {
+	cursor: pointer;
+	position: relative;
+	padding: 5px;
+	float: left;
+	overflow: hidden;
+	margin-right: 15px;
+	
+
+
+}
+.select li span {
+	width: 100%;
+
+}
+
+.width {
+	width: 70%;
+	margin-left: 15%;
+}
+
+li {
+	text-align: center;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+.loading-select {
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	transition:all 0.5s;
+}
+.top {
+	background-color: #505050;
+	left: 100%;
+	top: 0%;
+	opacity: 0;
+	z-index: -1;
+}
+
+.bottom {
+	background-color: #303030;
+	right: 100%;
+	top: 50%;
+	opacity: 0;
+	z-index: -1;
+	
+}
+
+.select li:hover > .top {
+	left: 0px !important;
+	opacity: 1 !important;
+	
+}
+
+.select li:hover > .bottom {
+	right: 0px !important;
+	opacity: 1 !important;
+}
+
+.button:hover > .top {
+	left: 0px !important;
+	opacity: 1 !important;
+}
+
+.button:hover > .bottom {
+	right: 0px !important;
+	opacity: 1 !important;
+}
+
+.projects li {
+	position: relative;
+	padding: 0px;
+	width: calc(50% - 30px);
+	float: left;
+	
+}
+li img {
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	float: left;
+}
+
+.text {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	visibility: hidden;
+	transition:all 1s;
+}
+
+.button {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	margin: 0px;
+	visibility: hidden;
+	transition:all 1s;
+	overflow: hidden;
+	cursor: pointer;
+
+}
+.img {
+	position: relative;
+	transition:all 1s;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.describe {
+	font-size: 12px;
+}
+
+.projects li span {
+	float: left;
+	width: 100px;
+	height: 25px;
+}
+
+.projects li:hover > .button{
+	margin-bottom: calc(20% - 25px);
+	visibility: visible;
+	z-index: 1;
+}
+
+.projects li:hover > .text{
+	margin-top: calc(20% - 25px);
+	visibility: visible;
+}
+
+.projects li:hover > .img{
+	opacity: 0;
+}
+
+.active {
+	
+}
+
+.loading {
+	
+	position: fixed;
+	width: 100%;
+	height: 50%;
+	transition:all 0.5s;
+}
+#right {
+	left: 100%;
+	top: 0%;
+	background-color: #222;
+}
+
+#left {
+	right: 100%;
+	top: 50%;
+	background-color: #333;
+}
+
+#loading-text {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	transition:all 0.50s;
+	color: white;
+}
+
+
+.button-style {
+	border-radius: 5px 5px 5px 5px;
+	border: 1px solid black;
+	box-shadow: 0px 5px #101010;
+	
+}

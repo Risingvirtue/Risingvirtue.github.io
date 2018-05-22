@@ -103,12 +103,12 @@ li {
 .projects li {
 	position: relative;
 	padding: 0px;
-	width: calc(50% - 30px);
+	
 	float: left;
 	
 }
 li img {
-	width: 100%;
+
 	height: 100%;
 	padding: 0px;
 	float: left;
@@ -124,15 +124,12 @@ li img {
 }
 
 .button {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	margin: 0px;
-	visibility: hidden;
-	transition:all 1s;
+	position: relative;
+	margin: auto;
+	width: 100px;
 	overflow: hidden;
 	cursor: pointer;
-
+	
 }
 .img {
 	position: relative;
@@ -153,9 +150,10 @@ li img {
 	height: 25px;
 }
 
-.projects li:hover > .button{
+.projects li:hover > .button-container{
 	margin-bottom: calc(20% - 25px);
 	visibility: visible;
+	opacity: 1;
 	z-index: 1;
 }
 
@@ -173,7 +171,6 @@ li img {
 }
 
 .loading {
-	
 	position: fixed;
 	width: 100%;
 	height: 50%;
@@ -183,12 +180,14 @@ li img {
 	left: 100%;
 	top: 0%;
 	background-color: #222;
+	z-index: 100;
 }
 
 #left {
 	right: 100%;
 	top: 50%;
 	background-color: #333;
+	z-index: 100;
 }
 
 #loading-text {
@@ -199,6 +198,7 @@ li img {
 	opacity: 0;
 	transition:all 0.50s;
 	color: white;
+	z-index: 101;
 }
 
 
@@ -207,4 +207,45 @@ li img {
 	border: 1px solid black;
 	box-shadow: 0px 5px #101010;
 	
+}
+
+.button-container {
+	bottom: 0px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	transition:all 1s;
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+i.fa {
+	
+	margin: auto;
+	font-size: 50px;
+}
+
+
+
+.right-text {
+	position: relative;
+	margin-top: -15px;
+	font-size: 20px;
+	
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 1s;
+}
+
+.main:hover > .main-text {
+	opacity: 1;
+}
+
+.contact:hover > .button-text {
+	opacity: 1;
+	
+}
+
+.main {
+	z-index: -1;
 }

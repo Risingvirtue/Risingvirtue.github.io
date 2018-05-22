@@ -19,6 +19,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
 		<link rel="stylesheet" type "text/css" href="projects.css">
+		<link rel="stylesheet" media="screen and (min-width:800px) and (max-width:3000px)" href="projectsLarge.css" />
+		<link rel="stylesheet" media="screen and (min-width:0px) and (max-width:800px)" href="projectsSmall.css" />
+		
 	</head>
 	
 	<body>
@@ -60,12 +63,14 @@
 							<div class="describe">Canvas, Animation, Rotation, OOP</div>
 						</div>
 						
-						<div id='seasons-link' class="button button-style">
-							
-							<span>More Info</span>
-							<div class="top loading-select"></div>
-							<div class="bottom loading-select"></div>
+						<div class="button-container">
+							<div id = 'seasons-link' class="button button-style">
+								<span>More Info</span>
+								<div class="top loading-select"></div>
+								<div class="bottom loading-select"></div>
+							</div>
 						</div>
+						
 						<div class="img">
 							<img id='seasons' src="../img/seasons.png"></img>
 						</div>
@@ -75,10 +80,12 @@
 							<div class="bold">Draw!</div>
 							<div class="describe">NodeJS, Socket.io, Server Management, Canvas, Pixel Manipulation</div>
 						</div>
-						<div id='draw-link' class="button button-style">
-							<span>More Info</span>
-							<div class="top loading-select"></div>
-							<div class="bottom loading-select"></div>
+						<div class="button-container">
+							<div id='draw-link' class="button button-style">
+								<span>More Info</span>
+								<div class="top loading-select"></div>
+								<div class="bottom loading-select"></div>
+							</div>
 						</div>
 						<div class="img">
 							<img id='draw' src="../img/draw.png"></img>
@@ -89,10 +96,12 @@
 							<div class="bold">Stock Game</div>
 							<div class="describe">AngularJS, Google Charts API, Stock API</div>
 						</div>
-						<div id='stock-link' class="button button-style">
-							<span>More Info</span>
-							<div class="top loading-select"></div>
-							<div class="bottom loading-select"></div>
+						<div class="button-container">
+							<div id='stock-link' class="button button-style">
+								<span>More Info</span>
+								<div class="top loading-select"></div>
+								<div class="bottom loading-select"></div>
+							</div>
 						</div>
 						<div class="img">
 							<img id='stock' src="../img/stock.png"></img>
@@ -103,10 +112,12 @@
 							<div class="bold">Percolation</div>
 							<div class="describe">Weighted Quick Union, Data Visualization, Analysis</div>
 						</div>
-						<div id='percolation-link' class="button button-style">
-							<span>More Info</span>
-							<div class="top loading-select"></div>
-							<div class="bottom loading-select"></div>
+						<div class="button-container">
+							<div id='percolation-link' class="button button-style">
+								<span>More Info</span>
+								<div class="top loading-select"></div>
+								<div class="bottom loading-select"></div>
+							</div>
 						</div>
 						<div class="img">
 							<img id='percolation' src="../img/percolation.png"></img>
@@ -118,10 +129,12 @@
 							<div class="bold">Bear Maps</div>
 							<div class="describe">A* search, Rastering, Quad Trees, Routing, Data Structures</div>
 						</div>
-						<div id="bear-link" class="button button-style">
-							<span>More Info</span>
-							<div class="top loading-select"></div>
-							<div class="bottom loading-select"></div>
+						<div class="button-container">
+							<div id="bear-link" class="button button-style">
+								<span>More Info</span>
+								<div class="top loading-select"></div>
+								<div class="bottom loading-select"></div>
+							</div>
 						</div>
 						<div class="img">
 							<img id='bearMaps' src="../img/bearMaps.png"></img>
@@ -133,10 +146,12 @@
 							<div class="bold">Ants</div>
 							<div class="describe">OOP, Inheritance</div>
 						</div>
-						<div id="ants-link" class="button button-style">
-							<span>More Info</span>
-							<div class="top loading-select"></div>
-							<div class="bottom loading-select"></div>
+						<div class="button-container">
+							<div id="ants-link" class="button button-style">
+								<span>More Info</span>
+								<div class="top loading-select"></div>
+								<div class="bottom loading-select"></div>
+							</div>
 						</div>
 						<div class="img">
 							<img id='ants' src="../img/ants.png"></img>
@@ -147,10 +162,12 @@
 							<div class="bold">Photo Transpose</div>
 							<div class="describe">NodeJS, Canvas, Pixel Manipulation, File Writing</div>
 						</div>
-						<div id ="photo-link" class="button button-style">
-							<span>More Info</span>
-							<div class="top loading-select"></div>
-							<div class="bottom loading-select"></div>
+						<div class="button-container">
+							<div id ="photo-link" class="button button-style">
+								<span>More Info</span>
+								<div class="top loading-select"></div>
+								<div class="bottom loading-select"></div>
+							</div>
 						</div>
 						<div class="img">
 							<img id='photoTranspose' src="../img/photoTranspose.png"></img>
@@ -161,9 +178,24 @@
 			
 			<div id="right" class="loading"></div>
 			<div id="left" class="loading"></div>
-			<div id="loading-text">Loading JavaScript Projects</div>
+			<div id="loading-text">Loading All Projects</div>
 		</div>
 		
+		<a href="../index.html">
+			<button class="main">
+				<span><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+				<span class="main-text">Main</span>
+				
+			</button>
+		</a>
+		
+		
+		<a href="../Contact/contact.html">
+			<button class="contact">
+				<span class="button-text">Contact</span>
+				<span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+			</button>
+		</a>
 	
 		<script src="projects.js"></script>
 	</body>

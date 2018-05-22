@@ -12,19 +12,23 @@ $(window).resize(function() {
 });
 
 function resize() {
-	var height = $('#seasons').css('height');
-	$('.projects li').css('height', height);
-	$('.img').css('height', height);
+	$(".img").css({width: '100%', height: '100%'});
 	var width = $('#seasons').css('width');
-	var infoWidth = $('#seasons-link').css('width');
 	width = width.substring(0, width.length - 2);
+	var infoWidth = $('#seasons-link').css('width');
 	infoWidth = infoWidth.substring(0, infoWidth.length - 2);
-	$('.button').css('margin-left', (width - infoWidth) / 2 + 'px');
+	if (window.innerWidth < 800) {
+		var newHeight = window.innerWidth * 0.7 * 0.562;
+	} else {
+		newHeight = window.innerWidth * 0.7 * 0.5 * 0.562;
+	}
+	$('.projects li').css('height', newHeight + 'px');
+	$('li img').css('height', newHeight);
 }
 
 
 function selectButton(type) {
-	console.log(type == 'all');
+	
 	
 	if (type != active) {
 		$('#' + active + ' > .top').css({'left': '100%', 'opacity': '0'});
@@ -32,8 +36,8 @@ function selectButton(type) {
 		
 		$('#' + type + ' > .top').css({'left': '0px', 'opacity': '1'});
 		$('#' + type + ' > .bottom').css({'right': '0px', 'opacity': '1'});
-
-		
+	
+		$("#loading-text").html("Loading " + toUpper(type) + " Projects")
 		if (type == 'all') {
 			setTimeout(function() {
 				for (var i =0 ; i < selectArr.length; i++) {
@@ -68,6 +72,14 @@ function selectButton(type) {
 	//$('.javascript').css({height: 0, width: 0, opacity: "0"});
 }
 
+function toUpper(str) {
+	return str.slice(0,1).toUpperCase() + str.slice(1);
+}
+
+function convertPixel(pixel) {
+	pixel = pixel.substring(0, pixel.length - 2);
+	return pixel;
+}
 $('#seasons-link').click(function() {
 	window.location.href = '../projects/seasons.html';
 })

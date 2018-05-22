@@ -158,6 +158,7 @@ function generateText() {
 			clearInterval(interval);
 			var on = false;
 			$('#intro').append('<span id="underscore">_</span>');
+			$('#small').css('display', 'block')
 			setInterval(function() {
 				if (on) {
 					on = !on;

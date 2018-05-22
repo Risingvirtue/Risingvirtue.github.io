@@ -1,0 +1,59 @@
+.projects li {
+	width: calc(50% - 30px);
+}
+
+li img {
+	width: 100%;
+}
+
+.main {
+	position: fixed;
+	margin-top: -38px;
+	left: 0;
+	top: 50%;
+	background-color: rgba(0,0,0,0);
+	border: white 0px solid;
+	width: 150px;
+	height: 76px;
+	color: white;
+	font-size: 20px;
+	z-index: 1;
+}
+
+.main-text {
+	position: relative; 
+	top: -10px;
+	left: 10px;
+	opacity: 0;
+	
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 1s;
+
+}
+
+.contact {
+	position: fixed;
+	margin-top: -38px;
+	right: 0;
+	top: 50%;
+	background-color: rgba(0,0,0,0);
+	border: white 0px solid;
+	width: 150px;
+	height: 76px;
+	color: white;
+	font-size: 20px;
+	z-index: 1;
+	
+}
+
+
+
+.button-text {
+	position: relative; 
+	top: -10px;
+	right: 10px;
+	opacity: 0;
+	
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 1s;
+}

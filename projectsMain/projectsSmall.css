@@ -1,0 +1,49 @@
+.projects li {
+	width: 100%;
+	
+}
+
+li img {
+	width: 100%;
+}
+
+i.fa {
+	font-size: 30px;
+}
+
+.main {
+	position: fixed;
+	margin-top: -5%;
+	left: 5px;
+	top: 50%;
+	background-color: rgba(0,0,0,0);
+	border: white 1px solid;
+	width: 10%;
+	height: 10%;
+	color: white;
+	z-index: 1;
+}
+
+.main-text {
+	display:none;
+}
+
+
+.contact {
+	position: fixed;
+	margin-top: -5%;
+	right: 5px;
+	top: 50%;
+	background-color: rgba(0,0,0,0);
+	border: white 1px solid;
+	width: 10%;
+	height: 10%;
+	color: white;
+	font-size: 20px;
+	z-index: 1;
+	
+}
+
+.button-text {
+	display:none;
+}

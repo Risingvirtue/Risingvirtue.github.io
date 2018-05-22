@@ -21,7 +21,11 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
 		
-		<link rel="stylesheet" type "text/css" href="main.css">
+		<!--<link rel="stylesheet" media="screen and (min-width:320px) and (max-width:480px)" href="main.css" /> -->
+		
+		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" media="screen and (min-width:1000px) and (max-width:3000px)" href="mainLarge.css" />
+		<link rel="stylesheet" media="screen and (min-width:0px) and (max-width:1000px)" href="mainSmall.css" /> 
 	</head>
 	
 	<body>
@@ -29,14 +33,17 @@
 		<div>
 			<section id="intro" class="text-center">
 			</section>
+			<a href="./projectsMain/projects.html"><button id="small"><span>Portfolio</span></button></a>
 			<div class="side-bar" id="nav">	
-				 <a class="contact" href="#"> <div class="side-bar-cell" id="fb"><i class="fa fa-facebook icon" aria-hidden="true"></i></div></a>
-				  <a class="contact" href="#"><div class="side-bar-cell" id="linkedIn"><i class="fa fa-linkedin icon" aria-hidden="true"></i></div></a>
-				  <a class="contact" href="#"><div class="side-bar-cell" id="github"><i class="fa fa-github-alt icon" aria-hidden="true"></i></div></a>
+				<a class="contact" href="https://www.facebook.com/johnny.on.94"> <div class="side-bar-cell" id="fb"><i class="fa fa-facebook icon" aria-hidden="true"></i></div></a>
+				<a class="contact" href="https://www.linkedin.com/in/johnny-on-514168145/"><div class="side-bar-cell" id="linkedIn"><i class="fa fa-linkedin icon" aria-hidden="true"></i></div></a>
+				<a class="contact" href="https://github.com/risingvirtue"><div class="side-bar-cell" id="github"><i class="fa fa-github-alt icon" aria-hidden="true"></i></div></a>
 			</div>
 			
 			<canvas id="main"></canvas>
-			<a href="./projectsMain/projects.html"><button class="portfolio"><span id="portfolio-text">Portfolio<span><i class="fa fa-angle-right" aria-hidden="true"></i></button></a>
+			
+			<a href="./projectsMain/projects.html"><button class="portfolio"><span class="portfolio-text">Portfolio</span><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></button></a>
+
 		</div>
 	
 		

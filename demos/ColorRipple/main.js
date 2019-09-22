@@ -6,6 +6,8 @@ var colors = ['#FF9AA2', '#FFB7B2', '#FFDAC1','#E2F0CB', '#B5EAD7', '#C7CEEA'];
 var increment = 3;
 var type = 'difference';
 var isAllColor = true;
+var currId = 0;
+var counter = 0;
 $(document).ready(function(){
 	fitToContainer();
 })
@@ -49,11 +51,29 @@ document.body.addEventListener("mousedown", function (e) {
     
     circles.push({
         fillStyle: getColor(),
-        radius: 50,
+        radius: 0,
         x: x,
-        y: y
+        y: y,
+        lineWidth: null,
+        id: counter++
     })
 });
+
+document.body.addEventListener("mouseup", function (e) {
+    
+    for (var i = 0; i < circles.length; i++) {
+        
+        if (circles[i].id == currId) {
+            
+            circles[i].lineWidth = circles[i].radius;
+            circles[i].radius /= 2;
+            currId++;
+            return;
+        }
+    }
+    
+});
+
 
 function getRandomNumber(max) {
     return Math.floor(Math.random() * max);
@@ -72,17 +92,26 @@ function draw() {
     requestAnimationFrame(draw);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     var newCircles = [];
-    
+    if (circles.length == 1) {
+        //console.log(circles[0].lineWidth);
+    }
     circles.forEach(function(circle) {
         ctx.beginPath();
+        ctx.strokeStyle = circle.fillStyle;
         ctx.fillStyle = circle.fillStyle;
         ctx.globalCompositeOperation = type;
         ctx.arc(circle.x,circle.y,circle.radius,0,2*Math.PI);
-        ctx.fill();
+        if (circle.lineWidth) {
+            ctx.lineWidth = circle.lineWidth;
+            ctx.stroke();
+        } else {
+            ctx.fill();
+        }
         circle.radius += increment;
         if (circle.radius < canvas.width) {
             newCircles.push(circle);
         }
+        
         
     })
     

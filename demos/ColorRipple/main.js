@@ -79,7 +79,7 @@ function draw() {
         ctx.globalCompositeOperation = type;
         ctx.arc(circle.x,circle.y,circle.radius,0,2*Math.PI);
         ctx.fill();
-        //circle.radius += increment;
+        circle.radius += increment;
         if (circle.radius < canvas.width) {
             newCircles.push(circle);
         }

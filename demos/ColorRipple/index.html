@@ -1,0 +1,29 @@
+<!Doctype HTML>
+
+<html>
+	<head>
+		<title>Color Canvas</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="main.css" />
+        <!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>	
+	<body>
+		<canvas id="main"></canvas>
+        <div id ="options"> 
+            <div class="speed">Speed: <input id= "speed" type="range" name="speed" min="1" max="10" value= "3" onChange= "handleSpeed()"></div>
+            <div class = "speed">
+                <select id="type" onChange= "handleType()">
+                  <option value="difference">Difference</option>
+                  <option value="lighter">Lighter</option>
+                  <option value="multiply">Multiply</option>
+                  <option value="overlay">Overlay</option>
+                  <option value="exclusion">Exclusion</option>
+                  <option value="color">Color</option>
+                </select>
+                <button id="color" onClick= "handleColor()">All Colors</button>
+                </div>
+        </div>
+		<script src="main.js"></script>
+	</body>
+</html>

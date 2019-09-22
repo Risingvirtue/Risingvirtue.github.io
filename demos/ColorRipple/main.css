@@ -1,0 +1,30 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#main {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    z-index: 0;
+}
+
+select {
+    z-index: 10;
+}
+
+button {
+    z-index: 10;
+}
+#options {
+    position: absolute;
+}
+
+.speed {
+    padding: 10px;
+    min-width: 200px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}

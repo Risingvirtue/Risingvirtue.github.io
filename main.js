@@ -88,7 +88,7 @@ function generateText() {
 	var line4 = new iterator('Feel free to take a look at my latest projects on the ', false);
 	line4.extra = true;
 	var line5 = new linkIterator('web portfolio page.', true);
-	var line6 = new iterator('Based in Las Vegas, NV. Inquires at johnnyon@berkeley.edu.');
+	var line6 = new iterator('Based in Las Vegas, NV. Inquires at johnnyon@berkeley.edu');
 	var lines = [line1, line2, line3, line4, line5, line6];
 	var index = 0;
 	var interval = setInterval(function() {

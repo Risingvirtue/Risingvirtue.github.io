@@ -1,0 +1,206 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+
+
+body, html{
+	font-family: "Times New Roman", Times, serif;
+	margin: 0px;
+	height: 100%;
+	background-color: green;
+}
+.cap {
+	background-color: #FFFF66;
+	border: 2px solid black;
+	position: absolute;
+	
+}
+#cap {
+	width: 250px;
+	height: 250px;
+	background-color: #202020;
+	border: 2px solid white;
+	position: absolute;
+	left: calc(50% - 125px);
+	top: calc(75% - 125px);
+	
+}
+.circle-container {
+	position: relative;
+}
+#circle-container {
+	position: relative;
+	height: 16px;
+	width: 16px;
+	top: 115px;
+	left: 115px;
+	transform: rotate(0deg);
+}
+
+.circle {
+	position: absolute;
+
+	background-color: black;
+
+	border: 1px solid black;
+	z-index: 1;
+}
+
+#circle {
+	
+	
+	height: 16px;
+	width: 16px;
+	border-radius: 8px;
+	
+
+}
+.tassle {
+	position: absolute;
+	background-color: black;
+	border: 1px solid black;
+}
+
+#tassle {
+	
+	height: 120px;
+	width: 4px;
+	top: 6px;
+	left: 6px;
+	
+	
+}
+.rope {
+	background-color:black;
+	position: relative;
+	border: 1px solid black;
+}
+
+#rope {
+	
+	height: 10px;
+	width: 10px;
+	border-radius: 5px;
+	left: 3px;
+	top: 120px;
+	
+}
+
+.strings {
+	position: relative;
+	
+}
+
+#strings {
+	top: 115px;
+	left: 7px;
+	z-index: -1;
+}
+
+.string1 {
+	position: absolute;
+
+	background-color: black;
+	transform: rotate(4deg);
+}
+#string1 {
+
+	height: 30px;
+	width: 4px;
+	margin-top: -0.5112x;
+	margin-left: -3.882px;
+}
+
+.string2 {
+	position: absolute;
+	background-color: #FFFF66;
+	transform: rotate(0deg);
+}
+
+.string3 {
+	position: absolute;
+	background-color: black;
+	transform: rotate(-4deg);
+
+}
+
+#throw {
+	position: absolute;
+	width: 150px;
+	height: 75px;
+	top: calc(50% - 37.5px);
+	left: calc(25% - 75px);
+	z-index: 1000;
+}
+
+#grass {
+	position: absolute;
+	bottom: 0%;
+	height: 30%;
+	width: 100%;
+	background-color: green;
+	z-index: 0;
+}
+
+.cloud {
+	position: absolute;
+	opacity: 0.7;
+}
+
+#sun {
+	display: none;
+	height: 100px;
+	width: 100px;
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	border-radius:50%;	
+	background:white;
+	opacity:0.9;	
+	box-shadow: 0px 0px 40px 15px white;
+	z-index: 100;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+	overflow: hidden;
+}
+
+#congratz {
+	position: absolute;
+	top: 15%;
+	left: calc(50% - 250px);
+	display: none;
+}
+
+#container {
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(rgb(135 206 250), rgb(176,224,230));
+	z-index: -1;
+}
+
+#throw {
+	font-family: 'Josefin Slab', serif;
+	border-radius: 10px;
+	border: 1px solid #A74982;
+	background-color: #A74982;
+	font-weight: bold;
+	color: white;
+	box-shadow: 0px 5px 0px 0px #6D184B;
+	letter-spacing: 2px;
+	font-size: 16px;
+}
+
+#throw:active {
+	transform: translateY(5px);
+	box-shadow: 0px 0px 0px 0px #6D184B;
+}
+
+#message {
+	font-family: 'Josefin Slab', serif;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	visibility: hidden;
+	font-weight: bold;
+}

@@ -8,8 +8,11 @@ var maxCap = null;
 var range = {lower: 0, upper: window.innerHeight};
 var maxHeight = 0;
 var clouds = [];
+/*
 var cloudUrls = ["http://www.scri8e.com/stars/PNG_Clouds/zc06.png?filename=./zc06.png&w0=800&h0s=289&imgType=3&h1=50&w1=140",
 				"http://freepngimages.com/wp-content/uploads/2016/02/clouds-transparent-background-2.png"];
+                */
+var cloudUrls = ['./cloud1.png', './cloud2.png']
 var cloudRatio = 289 / 800;
 
 $(document).ready(function() {

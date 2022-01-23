@@ -83,9 +83,9 @@ function addSpace(n) {
 function generateText() {
 	
 	var line1 = new iterator('Hello, my name is Johnny On._', true, "font-size: 25px; font-weight: bold");
-	var line2 = new iterator('I am a UC Berkeley Graduate with degrees in Microbiology and Applied Mathematics._', true);
-	var line3 = new iterator('Currently, I work as a Junior Web Developer focusing on JavaScript and Netsuite._', true);
-	var line4 = new iterator('Feel free to take a look at my latest projects on the ', false);
+	var line2 = new iterator('Graduated from Arizona State University with a degree in computer science._', true);
+	var line3 = new iterator('Currently, I work at Amazon as a software development engineer._', true);
+	var line4 = new iterator('Feel free to take a look at my previous projects on the ', false);
 	line4.extra = true;
 	var line5 = new linkIterator('web portfolio page.', true);
 	var line6 = new iterator('Based in Las Vegas, NV. Inquires at johnnyon@berkeley.edu');
